@@ -118,3 +118,22 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
   Machines care purely about specifications and will parse valid code into its parts with little effort. Humans, however, are more complex. We are less capable in areas where machines excel, hence their existence, but we are also skillful in areas where machines may falter. Our highly evolved brains, among their many talents, have become incredibly skilled at spotting patterns and inconsistencies. We rely on difference, or contrast, to focus our attention. If a pattern is not being followed, then it creates more work for our brains. For an example of such inconsistency, have a look at this code:
 
 </details>
+
+<details>
+  <summary>Meaningful abstractions</summary>
+  
+  Abstraction simplifies complexity by presenting it in a more understandable form. In coding, abstractions allow us to manage complexity without needing to grasp all underlying details. For example, JavaScript abstracts memory management, and browsers abstract HTTP and HTML details, making technology easier to use. The key is that every line of code involves using, creating, or communicating abstractions.
+  ![Screenshot_1](https://github.com/user-attachments/assets/4909a76c-53fc-4e42-854d-11d45ab8a3a0)
+
+</details>
+
+<details>
+  <summary>The Tower of Abstraction</summary>
+  
+ The tower of abstraction represents the layers of complexity in technology, from hardware (transistors, memory) at the base to high-level interfaces (browsers, JavaScript) at the top. Each layer abstracts complexity for the layer above. When writing code, we're adding to this tower, with users either being other developers or end-users who interact with the simplified interfaces we've built. This analogy highlights the dependency on each layer functioning correctly and the fragility of the entire system.
+ ![Screenshot_2](https://github.com/user-attachments/assets/5520edc6-e8b8-4131-95fa-8dc58d5ce3c0)
+
+
+</details>
+
+
