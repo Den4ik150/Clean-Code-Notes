@@ -106,58 +106,6 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 
   This entire book is concerned with teaching you how to write clean code in JavaScript. Writing code for humans is broadly about the clarity of intent, while writing code for machines is broadly about functionality. These needs cross over, but it's vital to discern the difference.
 
-  **Example:** Compare the following two pieces of code:
-
-  ```javascript
-  function chb(d,m,y) {
-      return new Date(y,m-1,d)-new Date / 6e4 * 70;
-  }
-const AVG_HEART_RATE_PER_MILLISECOND = 70 / 60000;
-function calculateHeartBeatsSinceBirth(birthDay, birthMonth, birthYear) {
-    const birthMonthIndex = birthMonth - 1;
-    const birthDate = new Date(birthYear, birthMonthIndex, birthDay);
-    const currentDate = new Date();
-    return (currentDate - birthDate) / AVG_HEART_RATE_PER_MILLISECOND;
-}
-The latter code is much clearer, communicates the programmer's intent, and is easier to understand and maintain.
-
-</details>
-```
-
-<details>
-  <summary>What is the Problem?</summary>
-
-  We've spoken about the importance of the user in programming, and how we must first understand what it is they wish to do if we are to have any hope of helping them. Only by understanding the problem can we begin to assemble requirements that our code will have to fulfill. In the exploration of the problem, it's useful to ask yourself the following questions:
-  
-  - What problem is the user encountering?
-  - How do they currently carry out this task?
-  - What existing solutions are there, and how do they work?
-
-  When we have assembled a complete understanding of the problem, we can then begin ideating, planning, and writing code to solve it. The model of the problem we create will dictate the code we end up writing.
-
-</details>
-
-<details>
-  <summary>What is the Model of a Problem?</summary>
-
-  A model or conceptual model is a schematic or representation that describes how something works. We create and adapt models all the time without realizing it. Over time, as you gain more information about a problem domain, your model will improve to better match reality.
-
-</details>
-
-<details>
-  <summary>Truly Understanding the Problem Domain</summary>
-
-  The first point of failure is typically misunderstanding the problem. If we don't understand what users are truly trying to accomplish, and we have not received all requirements, then we will inevitably retain a bad model of the problem and thus end up implementing the wrong solutions.
-  
-  Imagine that this scenario occurs at some point before the invention of the kettle...
-
-</details>
-
-<details>
-  <summary>Writing Code for Humans</summary>
-
-  This entire book is concerned with teaching you how to write clean code in JavaScript. In the following chapters, we'll go into a lot of detail, with discussions of almost every construct within the language. Firstly, we need to establish a few key perspectives that'll be important when we think about what it means to write clean code for humans.
-
 </details>
 
 <details>
