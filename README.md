@@ -147,7 +147,7 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 
 ## Chapter 2: The Tenets of Clean Code
 
-  <summary>This chapter focuses on the four core tenets of clean code: reliability, efficiency, maintainability, and usability. These tenets are essential for creating high-quality software. They are not strict rules but rather perspectives through which to evaluate your code. The chapter will use analogies and JavaScript examples to illustrate each tenet and show how to apply them to improve your code.</summary>
+- This chapter focuses on the four core tenets of clean code: reliability, efficiency, maintainability, and usability. These tenets are essential for creating high-quality software. They are not strict rules but rather perspectives through which to evaluate your code. The chapter will use analogies and JavaScript examples to illustrate each tenet and show how to apply them to improve your code.
   
 <details>
   
