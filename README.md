@@ -194,7 +194,7 @@ Correct code meets predefined expectations and requirements. For instance, if yo
 <details>
   <summary>Stability</summary>
   
-## Stability is crucial for ensuring that technology consistently performs well without unexpected failures. In code, stability means that the software behaves reliably across different conditions and inputs.
+-  Stability is crucial for ensuring that technology consistently performs well without unexpected failures. In code, stability means that the software behaves reliably across different conditions and inputs.
 ### Achieving Stability
 
 1. **Understand All Conditions**:
