@@ -150,6 +150,7 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
   <summary>This chapter focuses on the four core tenets of clean code: reliability, efficiency, maintainability, and usability. These tenets are essential for creating high-quality software. They are not strict rules but rather perspectives through which to evaluate your code. The chapter will use analogies and JavaScript examples to illustrate each tenet and show how to apply them to improve your code.</summary>
   
 <details>
+  
   <summary>Reliability</summary>
   
 Reliability is a fundamental quality of good software. Without it, technology loses its value and purpose. Reliability is not limited to large systems; it applies to every line of code. Reliable code is defined by the following qualities:
@@ -160,3 +161,32 @@ Reliability is a fundamental quality of good software. Without it, technology lo
 
 </details>
 
+<details>
+  
+  <summary>Correctness</summary>
+  
+Correct code meets predefined expectations and requirements. For instance, if you write a function to validate email addresses, it should accurately determine the validity of various email formats:
+
+### Establishing Correctness
+
+1. **Understand Requirements**:
+   - Clearly define what constitutes a valid email address.
+   - Requirements should guide how the code should behave. For instance:
+     - The function should return a positive result for valid email addresses.
+     - It should return a negative result for invalid ones.
+
+2. **Handle Edge Cases**:
+   - Recognize and manage special scenarios and edge cases. Some email formats might be valid according to standards but may need different rules based on the application's needs.
+
+3. **Use Existing Libraries**:
+   - Prefer using well-tested open-source libraries for common tasks like email validation to avoid the complexities of creating your own solution.
+
+4. **Test Thoroughly**:
+   - Develop comprehensive tests to ensure your code meets all requirements and handles various scenarios effectively.
+
+### Key Points
+
+- Understand the problem and user needs.
+- Refine requirements to be explicit and clear
+
+</details>
