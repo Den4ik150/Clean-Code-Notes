@@ -7,10 +7,6 @@
 # Clean-Code-Notes
 This repository contains a concise summary of the book "Clean Code in JavaScript" by James Padolsey. It compiles the core ideas, key points, and essential principles from each chapter of the book. The summary is intended to provide a quick reference to the most important concepts without the need to reread the entire book.
 
-# Table of Contents
-
-## Preface 1
-
 ### Section 1: What is Clean Code Anyway?
 
 ## Chapter 1: Setting the Scene
@@ -153,5 +149,14 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 
   <summary>This chapter focuses on the four core tenets of clean code: reliability, efficiency, maintainability, and usability. These tenets are essential for creating high-quality software. They are not strict rules but rather perspectives through which to evaluate your code. The chapter will use analogies and JavaScript examples to illustrate each tenet and show how to apply them to improve your code.</summary>
   
+<details>
+  <summary>Reliability</summary>
+  
+Reliability is a fundamental quality of good software. Without it, technology loses its value and purpose. Reliability is not limited to large systems; it applies to every line of code. Reliable code is defined by the following qualities:
 
+1. **Correct**: The code performs its intended function accurately.
+2. **Stable**: It consistently behaves as expected under various conditions.
+3. **Resilient**: It gracefully handles errors and unexpected situations.
+
+</details>
 
