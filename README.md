@@ -123,3 +123,76 @@ The latter code is much clearer, communicates the programmer's intent, and is ea
 
 </details>
 ```
+
+<details>
+  <summary>What is the Problem?</summary>
+
+  We've spoken about the importance of the user in programming, and how we must first understand what it is they wish to do if we are to have any hope of helping them. Only by understanding the problem can we begin to assemble requirements that our code will have to fulfill. In the exploration of the problem, it's useful to ask yourself the following questions:
+  
+  - What problem is the user encountering?
+  - How do they currently carry out this task?
+  - What existing solutions are there, and how do they work?
+
+  When we have assembled a complete understanding of the problem, we can then begin ideating, planning, and writing code to solve it. The model of the problem we create will dictate the code we end up writing.
+
+</details>
+
+<details>
+  <summary>What is the Model of a Problem?</summary>
+
+  A model or conceptual model is a schematic or representation that describes how something works. We create and adapt models all the time without realizing it. Over time, as you gain more information about a problem domain, your model will improve to better match reality.
+
+</details>
+
+<details>
+  <summary>Truly Understanding the Problem Domain</summary>
+
+  The first point of failure is typically misunderstanding the problem. If we don't understand what users are truly trying to accomplish, and we have not received all requirements, then we will inevitably retain a bad model of the problem and thus end up implementing the wrong solutions.
+  
+  Imagine that this scenario occurs at some point before the invention of the kettle...
+
+</details>
+
+<details>
+  <summary>Writing Code for Humans</summary>
+
+  This entire book is concerned with teaching you how to write clean code in JavaScript. In the following chapters, we'll go into a lot of detail, with discussions of almost every construct within the language. Firstly, we need to establish a few key perspectives that'll be important when we think about what it means to write clean code for humans.
+
+</details>
+
+<details>
+  <summary>Readability</summary>
+
+  When we write code, it's essential to consider how human brains will consume it. Fellow programmers will scan over your code, reading the pertinent parts, attempting to gain a running comprehension of its inner workings. Readability is the first hurdle that they must overcome. If they are unable to read and cognitively navigate the code you've written, then they'll be less able to use it. This will drastically limit the utility and value of your code.
+
+  Programmers, in my experience, don't tend to like thinking of code in terms of aesthetic design, but the best programmers will appreciate that these concepts are intrinsically intertwined. The design of our code in a presentational or visual sense is as vital to its comprehensibility as its architectural design. Design, in the end, is about creating something in a way that optimally delivers a purpose for its users. For our fellow programmers, that purpose is comprehension. And so we must design our code to deliver that purpose.
+
+  Machines care purely about specifications and will parse valid code into its parts with little effort. Humans, however, are more complex. We are less capable in areas where machines excel, hence their existence, but we are also skillful in areas where machines may falter. Our highly evolved brains, among their many talents, have become incredibly skilled at spotting patterns and inconsistencies. We rely on difference, or contrast, to focus our attention. If a pattern is not being followed, then it creates more work for our brains. For an example of such inconsistency, have a look at this code:
+
+  ```javascript
+  var TheName = 'James';
+  var City = 'London';
+  var hobby = 'Photography', job = 'Programming';
+
+You probably don't enjoy looking at this code. Its messiness is distracting, and it appears to follow no particular pattern. The naming and spacing are inconsistent. Our brains struggle with this, and so reading the code, and building a full understanding of it, becomes more cognitively expensive.
+
+We might refactor the preceding code to be more consistent, like so:
+
+var name = 'James';
+var city = 'London';
+var hobby = 'Photography';
+var job = 'Programming';
+
+Here, we've used a single naming pattern and have employed consistent syntax and spacing in every statement.
+
+Alternatively, perhaps we would like to declare all variables within a single var declaration and align the assignment (=) operators so that all values start along the same vertical axis:
+
+var name = 'James',
+    city = 'London',
+    hobby = 'Photography',
+    job = 'Programming';
+
+You'll notice that these different styles are very subjective. Some people prefer one way, others prefer another way. And that's okay. I am not stating which approach is superior. Instead, I am pointing out that if we care about writing code for humans, then we should care, first and foremost, about its readability and presentation, and consistency is a key part of that.
+
+</details>
+```
