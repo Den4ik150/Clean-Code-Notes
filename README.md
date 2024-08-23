@@ -13,193 +13,42 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 
 ### Section 1: What is Clean Code Anyway?
 
-- **Chapter 1: Setting the Scene** 9
-  - Why we write code 10
-  - Code as intent 10
-  - Who is the user? 11
-  - What is the problem? 13
-  - Truly understanding the problem domain 15
-  - Writing code for humans 16
-  - Communicating intent 16
-  - Readability 17
-  - Meaningful abstractions 19
-  - The tower of abstraction 20
-  - The layers of clean code 21
-  - Summary 21
-- **Chapter 2: The Tenets of Clean Code** 22
-  - Reliability 22
-  - Correctness 23
-  - Stability 25
-  - Resilience 26
-  - Efficiency 29
-  - Time 29
-  - Space 31
-  - Efficiency's effects 31
-  - Maintainability 32
-  - Adaptability 33
-  - Familiarity 34
-  - Usability 36
-  - User stories 38
-  - Intuitive design 38
-  - Accessibility 39
-  - Summary 40
-- **Chapter 3: The Enemies of Clean Code** 41
-  - Enemy #1 – JavaScript 41
-  - Enemy #2 – management 42
-  - Pressure to ship 43
-  - Bad metrics 46
-  - Lack of ownership 47
-  - Enemy #3 – Self 49
-  - Showing off with syntax 49
-  - Stubborn opinions 51
-  - Imposter syndrome 52
-  - Enemy #4 – The cargo cult 53
-  - Cargo culting code 54
-  - Cargo culting tools and libraries 57
-  - Summary 57
-- **Chapter 4: SOLID and Other Principles** 58
-  - The Law of Demeter 59
-  - SOLID 62
-  - Single responsibility principle 63
-  - Open–closed principle 65
-  - Liskov substitution principle 67
-  - Interface segregation principle 69
-  - Dependency inversion principle 72
-  - The abstraction principle 75
-  - Over-abstraction 76
-  - Under-abstraction 78
-  - Balanced abstraction 80
-  - Functional programming principles 81
-  - Functional purity 83
-  - Immutability 85
-  - Summary 86
-- **Chapter 5: Naming Things Is Hard** 87
-  - What's in a name? 88
-  - Purpose 88
-  - Concept 90
-  - Contract 92
-  - Naming anti-patterns 93
-  - Needlessly short names 94
-  - Needlessly exotic names 95
-  - Needlessly long names 96
-  - Consistency and hierarchy 97
-  - Techniques and considerations 100
-  - Hungarian notation 101
-  - Naming and abstracting functions 103
-  - Three bad names 105
-  - Summary 105
+## Chapter 1: Setting the Scene
 
-### Section 2: JavaScript and Its Bits
+<details>
+  <summary>JavaScript Origins</summary>
+  
+  - Created by Brendan Eich in 1995 as a "glue language" to manipulate HTML via the DOM API.
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
 
-- **Chapter 6: Primitive and Built-In Types** 107
-  - Primitive types 108
-  - Immutability of primitives 108
-  - Primitive wrappers 109
-  - The falsy primitives 110
-  - Number 112
-  - String 115
-  - Boolean 120
-  - BigInt 121
-  - Symbol 122
-  - null 123
-  - undefined 125
-  - Objects 127
-  - Property names 128
-  - Property descriptors 129
-  - Map and WeakMap 132
-  - The prototype 133
-  - When and how to use objects 138
-  - Functions 138
-  - Syntactic context 140
-  - Function bindings and this 141
-  - Execution context 142
-  - super 143
-  - new.target 144
-  - arguments 145
-  - Function names 146
-  - Function declarations 148
-  - Function expressions 149
-  - Arrow functions 150
-  - Immediately Invoked Function Expressions 152
-  - Method definitions 154
-  - Async functions 156
-  - Generator functions 158
-  - Arrays and iterables 160
-  - Array-like objects 161
-  - Set and WeakSet 163
-  - Iterable protocol 163
-  - RegExp 166
-  - Regular expression 101 166
-  - RegExp flags 168
-  - Methods accepting RegExp 169
-  - RegExp methods and lastIndex 171
-  - Stickiness 172
-  - Summary 173
-- **Chapter 7: Dynamic Typing** 174
-  - Detection 175
-  - The typeof operator 179
-  - Type-detecting techniques 181
-  - Detecting Booleans 181
-  - Detecting numbers 182
-  - Detecting strings 184
-  - Detecting undefined 185
-  - Detecting null 187
-  - Detecting null or undefined 187
-  - Detecting arrays 188
-  - Detecting instances 190
-  - Detecting plain objects 190
-  - Conversion, coercion, and casting 191
-  - Converting into a Boolean 194
-  - Converting into a String 196
-  - Converting into a Number 197
-  - Converting into a primitive 199
-  - Summary 202
-- **Chapter 8: Operators** 203
-  - What is an operator? 204
-  - Operator arity 204
-  - Operator function 205
-  - Operator precedence and associativity 206
-  - Arithmetic and numeric operators 209
-  - The addition operator 210
-    - Both operands are numbers 210
-    - Both operands are strings 211
-    - One operand is a string 211
-    - One operand is a non-primitive 211
-    - Conclusion – know your operands! 211
-  - The subtraction operator 212
-  - The division operator 212
-  - The multiplication operator 213
-  - The remainder operator 214
-  - The exponentiation operator 215
-  - The unary plus operator 216
-  - The unary minus operator 217
-  - Logical operators 218
-    - The logical NOT operator 218
-    - The logical AND operator 220
-    - The logical OR operator 222
-  - Comparative operators 223
-    - Abstract equality and inequality 223
-    - Strict equality and inequality 225
-    - Greater than and less than 227
-    - Lexicographic comparison 227
-    - Numeric comparison 229
-  - The instanceof operator 230
-  - The in operator 230
-  - Assignment operators 232
-  - Increment and decrement (prefix and postfix) operators 235
-    - Prefix increment/decrement 235
-    - Postfix increment/decrement 236
-  - Destructuring assignment 237
-  - Property access operators 239
-    - Direct property access 239
-    - Computed property access 240
-  - Other operators and syntax 241
-    - The delete operator 241
-    - The void operator 242
-    - The new operator 242
-    - The spread syntax 245
-    - The comma operator 247
-    - Grouping 248
-    - Bitwise operators 250
-  - Summary
+</details>
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+<details>
+  <summary>Community and Challenges</summary>
+  
+  - The JavaScript ecosystem is vast, with numerous frameworks and tools, leading to challenges in writing clean, maintainable code.
+
+</details>
+
+<details>
+  <summary>Purpose of Code</summary>
+  
+  - Code serves as a problem-solving tool and a form of communication, expressing intent with specificity.
+
+</details>
+
+<details>
+  <summary>Importance of Users</summary>
+  
+  - Understanding the needs of users (both developers and end-users) is critical to writing effective, reliable code.
+
+</details>
 
