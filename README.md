@@ -133,7 +133,21 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 - The tower of abstraction represents the layers of complexity in technology, from hardware (transistors, memory) at the base to high-level interfaces (browsers, JavaScript) at the top. Each layer abstracts complexity for the layer above. When writing code, we're adding to this tower, with users either being other developers or end-users who interact with the simplified interfaces we've built. This analogy highlights the dependency on each layer functioning correctly and the fragility of the entire system.
  ![Screenshot_2](https://github.com/user-attachments/assets/5520edc6-e8b8-4131-95fa-8dc58d5ce3c0)
 
+</details>
+
+<details>
+  <summary>The Layers of Clean Code</summary>
+  
+- The book will build on foundational concepts to explore clean code abstractions, from reliable and usable software to detailed JavaScript syntax. By the end, you'll understand multiple layers of clean code, ranging from individual lines to overall architectural design.
 
 </details>
+
+<details>
+  <summary>Summary</summary>
+  
+- This chapter establishes a foundation for writing effective code by emphasizing the importance of understanding user needs, problem domains, and clear communication of intent. It highlights the significance of readability and meaningful abstractions. The next chapter will delve into the tenets of clean code—reliability, efficiency, maintainability, and usability—applying these principles to JavaScript.
+
+</details>
+
 
 
