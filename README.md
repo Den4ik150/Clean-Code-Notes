@@ -763,8 +763,11 @@ Key Takeaways:
 Clean code is not just about writing code; it's about cultivating a culture of quality and maintainability within teams and individuals.
 
 </details>
+
+## Chapter 4: SOLID and Other Principles
+
 <details>
-  <summary>Evolution</summary>
+  <summary>## The Law of Demeter (LoD)</summary>
   
   - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
   - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
