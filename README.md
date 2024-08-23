@@ -122,3 +122,4 @@ function calculateHeartBeatsSinceBirth(birthDay, birthMonth, birthYear) {
 The latter code is much clearer, communicates the programmer's intent, and is easier to understand and maintain.
 
 </details>
+```
