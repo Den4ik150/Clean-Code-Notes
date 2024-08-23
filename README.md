@@ -195,6 +195,8 @@ Correct code meets predefined expectations and requirements. For instance, if yo
   <summary>Stability</summary>
   
 -  Stability is crucial for ensuring that technology consistently performs well without unexpected failures. In code, stability means that the software behaves reliably across different conditions and inputs.
+
+
 ### Achieving Stability
 
 1. **Understand All Conditions**:
@@ -214,4 +216,28 @@ Correct code meets predefined expectations and requirements. For instance, if yo
 
 By following these practices, you can enhance the stability of your code and build software that users can depend on.
 
+</details>
+
+
+<details>
+  <summary>Resilience</summary>
+  
+
+Resilience in software refers to the ability to handle unexpected or nonroutine inputs effectively, ensuring that failures do not disrupt functionality. It's also known as fault tolerance and involves minimizing the impact of failures through various contingencies.
+
+### Key Points
+
+- **Definition**: Resilience is about avoiding failure and managing unexpected situations or inputs gracefully.
+- **Real-World Example**: Critical systems like NASA's flight control use redundancies to handle failures. Hospitals use backup generators, and transport networks have replacement services for failures.
+- **In JavaScript**:
+  - **Graceful Degradation**: Design your code to remain functional even when certain conditions aren't met. For instance, detect if a browser supports MP3 audio and provide an alternative like a transcript if it does not.
+  - **Feature Detection**: Ensure that your code checks for necessary features before using them and offers alternatives if they're unavailable.
+
+### Implementation
+
+- **Plan for Failures**: Build your code with the expectation that some elements might fail or behave unexpectedly.
+- **Provide Alternatives**: If a feature isn’t supported, offer a usable fallback to maintain functionality for users.
+- **Enhance Stability**: By addressing potential failure points, you improve the overall stability and usability of your software.
+
+Resilience helps ensure that your code can handle edge cases and unforeseen issues, improving its reliability and user experience.
 </details>
