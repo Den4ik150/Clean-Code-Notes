@@ -70,7 +70,7 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 <details>
   <summary>What is the Model of a Problem?</summary>
 
-  A model or conceptual model is a schematic or representation that describes how something works. We create and adapt models all the time without realizing it. Over time, as you gain more information about a problem domain, your model will improve to better match reality.
+  - A model or conceptual model is a schematic or representation that describes how something works. We create and adapt models all the time without realizing it. Over time, as you gain more information about a problem domain, your model will improve to better match reality.
   
   **Example:** Imagine we are responsible for a note-taking application for students. A user has expressed the following problem:
   
@@ -89,7 +89,7 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 <details>
   <summary>Truly Understanding the Problem Domain</summary>
 
-  The first point of failure is typically misunderstanding the problem. If we don't understand what users are truly trying to accomplish, and we have not received all requirements, then we will inevitably retain a bad model of the problem and thus end up implementing the wrong solutions.
+  - The first point of failure is typically misunderstanding the problem. If we don't understand what users are truly trying to accomplish, and we have not received all requirements, then we will inevitably retain a bad model of the problem and thus end up implementing the wrong solutions.
 
   **Example:** Imagine that this scenario occurs at some point before the invention of the kettle:
 
@@ -97,32 +97,32 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 
   *Matthew (engineer):* Understood; I will create a vessel that does exactly that.
   
-  Matthew asks no questions and immediately gets to work. One day later, he comes up with a contraption without a handle, which he later adds after receiving feedback. This miscommunication could have been avoided by better understanding the user's needs from the beginning.
+  - Matthew asks no questions and immediately gets to work. One day later, he comes up with a contraption without a handle, which he later adds after receiving feedback. This miscommunication could have been avoided by better understanding the user's needs from the beginning.
 
 </details>
 
 <details>
   <summary>Writing Code for Humans</summary>
 
-  This entire book is concerned with teaching you how to write clean code in JavaScript. Writing code for humans is broadly about the clarity of intent, while writing code for machines is broadly about functionality. These needs cross over, but it's vital to discern the difference.
+  - This entire book is concerned with teaching you how to write clean code in JavaScript. Writing code for humans is broadly about the clarity of intent, while writing code for machines is broadly about functionality. These needs cross over, but it's vital to discern the difference.
 
 </details>
 
 <details>
   <summary>Readability</summary>
 
-  When we write code, it's essential to consider how human brains will consume it. Fellow programmers will scan over your code, reading the pertinent parts, attempting to gain a running comprehension of its inner workings. Readability is the first hurdle that they must overcome. If they are unable to read and cognitively navigate the code you've written, then they'll be less able to use it. This will drastically limit the utility and value of your code.
+ - When we write code, it's essential to consider how human brains will consume it. Fellow programmers will scan over your code, reading the pertinent parts, attempting to gain a running comprehension of its inner workings. Readability is the first hurdle that they must overcome. If they are unable to read and cognitively navigate the code you've written, then they'll be less able to use it. This will drastically limit the utility and value of your code.
 
-  Programmers, in my experience, don't tend to like thinking of code in terms of aesthetic design, but the best programmers will appreciate that these concepts are intrinsically intertwined. The design of our code in a presentational or visual sense is as vital to its comprehensibility as its architectural design. Design, in the end, is about creating something in a way that optimally delivers a purpose for its users. For our fellow programmers, that purpose is comprehension. And so we must design our code to deliver that purpose.
+- Programmers, in my experience, don't tend to like thinking of code in terms of aesthetic design, but the best programmers will appreciate that these concepts are intrinsically intertwined. The design of our code in a presentational or visual sense is as vital to its comprehensibility as its architectural design. Design, in the end, is about creating something in a way that optimally delivers a purpose for its users. For our fellow programmers, that purpose is comprehension. And so we must design our code to deliver that purpose.
 
-  Machines care purely about specifications and will parse valid code into its parts with little effort. Humans, however, are more complex. We are less capable in areas where machines excel, hence their existence, but we are also skillful in areas where machines may falter. Our highly evolved brains, among their many talents, have become incredibly skilled at spotting patterns and inconsistencies. We rely on difference, or contrast, to focus our attention. If a pattern is not being followed, then it creates more work for our brains. For an example of such inconsistency, have a look at this code:
+- Machines care purely about specifications and will parse valid code into its parts with little effort. Humans, however, are more complex. We are less capable in areas where machines excel, hence their existence, but we are also skillful in areas where machines may falter. Our highly evolved brains, among their many talents, have become incredibly skilled at spotting patterns and inconsistencies. We rely on difference, or contrast, to focus our attention. If a pattern is not being followed, then it creates more work for our brains. For an example of such inconsistency, have a look at this code:
 
 </details>
 
 <details>
   <summary>Meaningful abstractions</summary>
   
-  Abstraction simplifies complexity by presenting it in a more understandable form. In coding, abstractions allow us to manage complexity without needing to grasp all underlying details. For example, JavaScript abstracts memory management, and browsers abstract HTTP and HTML details, making technology easier to use. The key is that every line of code involves using, creating, or communicating abstractions.
+- Abstraction simplifies complexity by presenting it in a more understandable form. In coding, abstractions allow us to manage complexity without needing to grasp all underlying details. For example, JavaScript abstracts memory management, and browsers abstract HTTP and HTML details, making technology easier to use. The key is that every line of code involves using, creating, or communicating abstractions.
   ![Screenshot_1](https://github.com/user-attachments/assets/4909a76c-53fc-4e42-854d-11d45ab8a3a0)
 
 </details>
@@ -130,7 +130,7 @@ This repository contains a concise summary of the book "Clean Code in JavaScript
 <details>
   <summary>The Tower of Abstraction</summary>
   
- The tower of abstraction represents the layers of complexity in technology, from hardware (transistors, memory) at the base to high-level interfaces (browsers, JavaScript) at the top. Each layer abstracts complexity for the layer above. When writing code, we're adding to this tower, with users either being other developers or end-users who interact with the simplified interfaces we've built. This analogy highlights the dependency on each layer functioning correctly and the fragility of the entire system.
+- The tower of abstraction represents the layers of complexity in technology, from hardware (transistors, memory) at the base to high-level interfaces (browsers, JavaScript) at the top. Each layer abstracts complexity for the layer above. When writing code, we're adding to this tower, with users either being other developers or end-users who interact with the simplified interfaces we've built. This analogy highlights the dependency on each layer functioning correctly and the fragility of the entire system.
  ![Screenshot_2](https://github.com/user-attachments/assets/5520edc6-e8b8-4131-95fa-8dc58d5ce3c0)
 
 
