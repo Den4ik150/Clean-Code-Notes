@@ -169,30 +169,4 @@ The latter code is much clearer, communicates the programmer's intent, and is ea
 
   Machines care purely about specifications and will parse valid code into its parts with little effort. Humans, however, are more complex. We are less capable in areas where machines excel, hence their existence, but we are also skillful in areas where machines may falter. Our highly evolved brains, among their many talents, have become incredibly skilled at spotting patterns and inconsistencies. We rely on difference, or contrast, to focus our attention. If a pattern is not being followed, then it creates more work for our brains. For an example of such inconsistency, have a look at this code:
 
-  ```javascript
-  var TheName = 'James';
-  var City = 'London';
-  var hobby = 'Photography', job = 'Programming';
-
-You probably don't enjoy looking at this code. Its messiness is distracting, and it appears to follow no particular pattern. The naming and spacing are inconsistent. Our brains struggle with this, and so reading the code, and building a full understanding of it, becomes more cognitively expensive.
-
-We might refactor the preceding code to be more consistent, like so:
-
-var name = 'James';
-var city = 'London';
-var hobby = 'Photography';
-var job = 'Programming';
-
-Here, we've used a single naming pattern and have employed consistent syntax and spacing in every statement.
-
-Alternatively, perhaps we would like to declare all variables within a single var declaration and align the assignment (=) operators so that all values start along the same vertical axis:
-
-var name = 'James',
-    city = 'London',
-    hobby = 'Photography',
-    job = 'Programming';
-
-You'll notice that these different styles are very subjective. Some people prefer one way, others prefer another way. And that's okay. I am not stating which approach is superior. Instead, I am pointing out that if we care about writing code for humans, then we should care, first and foremost, about its readability and presentation, and consistency is a key part of that.
-
 </details>
-```
