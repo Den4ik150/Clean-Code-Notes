@@ -1230,10 +1230,36 @@ Key Points:
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>Needlessly long names</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+ **Needlessly long names** try to convey too much meaning in one name, which can lead to confusion and indicate a complex or confused underlying abstraction.
+
+#### Example of Poor Naming:
+```javascript
+documentManager.refreshAndSaveSignedAndNonPendingDocuments();
+```
+- This name is unclear: is it refreshing and saving documents that are signed and non-pending, or is it doing these actions for documents that are either signed or non-pending?
+
+Improved Approach:
+- Refactor and split into distinct functions:
+```javascript
+documentManager.refreshSignedDocuments();
+documentManager.refreshNonPendingDocuments();
+documentManager.saveSignedDocuments();
+documentManager.saveNonPendingDocuments();
+```
+- Or use a method that handles multiple states:
+```javascript
+documentManager.refreshDocumentsWithStates([
+    documentManager.STATE_SIGNED,
+    documentManager.STATE_NON_PENDING
+]);
+```
+Key Points:
+- Long names indicate complexity: A long name often reveals a confused or overly complex abstraction.
+- Refactor where possible: Simplifying the abstraction usually leads to more straightforward and shorter names.
+- Aim for clarity: Names should ideally include one verb, one adjective, and one noun to keep them clear and concise.
+** The goal is to break down complex actions into simpler, more understandable methods, which naturally leads to shorter, clearer names.
 
 </details>
 
