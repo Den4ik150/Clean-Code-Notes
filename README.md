@@ -1331,6 +1331,835 @@ class MyDataStructure {
 </details>
 
 <details>
+  <summary>Techniques and Considerations</summary>
+  
+  JavaScript's naming conventions can be varied and sometimes conflicting. However, there are some broadly accepted conventions:
+
+- **Constants:** Use uppercase letters with underscores separating words.
+  - Example: `DEFAULT_COMPONENT_COLOR`
+
+- **Constructors or Classes:** Use CamelCase with an initial uppercase letter.
+  - Example: `MyComponent`
+
+- **Everything Else:** Use camelCase with an initial lowercase letter.
+  - Example: `myComponentInstance`
+
+Beyond these conventions, naming decisions are influenced by the specific problems being solved and the APIs or frameworks in use. For instance, working with the DOM API will typically involve names like `element`, `attribute`, and `node`. Similarly, popular frameworks may dictate specific naming conventions.
+
+#### Understanding these foundational naming techniques will help you craft clear and effective names, even in unfamiliar or novel problem domains.
+
+</details>
+
+<details>
+  <summary>Hungarian notation</summary>
+  
+  JavaScript is a dynamically typed language, meaning types are determined at runtime and can change. This contrasts with statically-typed languages, which provide compile-time type checking. Due to this, careful naming is crucial.
+
+**Hungarian Notation** involves including type information in variable names, such as:
+- `elButton` for a DOM element
+- `nAge` for a number
+- `objDetails` for an object
+
+**Advantages:**
+- **Certainty:** Provides clearer purpose and contract.
+- **Consistency:** Promotes a uniform naming approach.
+- **Enforcement:** May aid in adhering to typing conventions.
+
+**Disadvantages:**
+- **Runtime Changes:** Names may become misleading if types change.
+- **Codebase Rigidity:** Can make type changes and refactoring cumbersome.
+- **Lack of Meaning:** Type information does not fully convey purpose or concept.
+
+Hungarian notation is sometimes used for DOM elements, such as `elHeader` or `$header`, with the latter being popularized by jQuery and Chromium DevTools.
+
+In JavaScript, Hungarian notation can be selectively useful, especially when distinguishing between different types referring to the same concept within a scope:
+```javascript
+function renderArticle(name) {
+    const article = Article.getByName(name);
+    const title = article.getTitle();
+    const strArticle = article.toString();
+    // ...
+}
+```
+#### Use Hungarian notation where necessary for clarity, but avoid overusing it. Aim for descriptive names that convey purpose and context.
+
+</details>
+
+
+<details>
+  <summary>Naming and abstracting functions</summary>
+  
+ **Function Naming Basics:**
+- Use the **imperative form** for function names, as it is clear and actionable. For example:
+  - `displayPrompt()`
+  - `removeElements()`
+  - `generateRandomNumber(x, y)`
+
+**Special Cases:**
+- Prefix functions that return a Boolean with `is` or `has`, like `isValid()`.
+- Name constructors (functions that create instances) after the instance they produce, such as `Route` or `SpecialComponent`.
+
+**Avoid Over-Qualification:**
+- Function names should be concise. Avoid over-qualifying names with too many details. For example, instead of `findBlueBicycleWithAMissingFrontWheel()`, use a more general function like `findBicycle()` with arguments to specify the details:
+  ```javascript
+  findBicycle({
+    color: 'blue',
+    frontWheel: 'missing'
+  });
+  ```
+Generic Functions and Arguments:
+
+- For more flexible functions, make them generic and use arguments for qualifications. Example:
+```javascript
+findObject({
+  type: 'bicycle',
+  color: 'blue',
+  frontWheel: 'missing'
+});
+```
+Functional Composition:
+
+- To handle various specific cases, compose higher-level abstractions:
+```javascript
+const findBicycle = config => findObject({ ...config, type: 'bicycle' });
+const findSkateboard = config => findObject({ ...config, type: 'skateboard' });
+const findScooter = config => findObject({ ...config, type: 'scooter' });
+```
+Single Responsibility Principle (SRP):
+- Ensure that functions perform only one discernible action. While the internal implementation may be complex, the function should appear to do one thing from the user's perspective.
+
+</details>
+
+
+<details>
+  <summary>Three Bad Names Approach</summary>
+  
+  When struggling to name a function or variable, try the "Three Bad Names" technique:
+
+1. **Generate Three Bad Names:**
+   - Create at least three names that are imperfect or awkward but describe the functionality directly.
+   - Example for checking forbidden words in usernames:
+     - `matchUsernameAgainstForbiddenWords`
+     - `checkForForbiddenWordConflicts`
+     - `isUsernameReservedWord`
+
+2. **Evaluate and Refine:**
+   - Use these names as a starting point to refine and find a more suitable name.
+   - Compare and contrast the generated names, and mix elements to create a clearer and more descriptive name.
+   - For example, from the three bad names, you might arrive at `isUsernameForbiddenWord`.
+
+**Key Benefits:**
+- Easier to brainstorm and avoid perfectionism.
+- Helps in narrowing down the most descriptive and direct name by iterating over less-than-perfect options.
+
+
+</details>
+
+
+<details>
+  <summary>Summary</summary>
+  
+ In this chapter, we explored the art of naming things in programming. Here's a brief summary of the key points:
+
+- **Characteristics of Good Names:**
+  - **Purpose:** Names should clearly indicate the role and functionality of the code.
+  - **Concept:** Names should reflect the underlying concept or abstraction.
+  - **Contract:** Names should convey how the code is expected to be used.
+
+- **Anti-Patterns to Avoid:**
+  - **Needlessly Exotic Names:** Avoid names that are obscure or overly complex.
+  - **Needlessly Long Names:** Avoid names that are overly descriptive or complex; break them down into simpler, more understandable names.
+  - **Inconsistent Naming:** Maintain consistency in naming patterns to avoid confusion.
+
+- **Hierarchy and Consistency:**
+  - Use hierarchical structures to provide context and simplify names.
+  - Maintain consistent naming conventions to ease understanding and navigation.
+
+- **Techniques and Conventions:**
+  - Adopt conventions such as using uppercase with underscores for constants, and camel-case for variables and functions.
+  - Be mindful of JavaScript's dynamic typing and use partial Hungarian notation where necessary to avoid ambiguity.
+  - Use the imperative form for function names and avoid over-qualification; leverage arguments for additional configuration.
+
+- **Three Bad Names Technique:**
+  - Generate three less-than-perfect names to explore possibilities and refine to a more descriptive and accurate name.
+
+</details>
+
+
+### Section 2: JavaScript and Its Bits
+
+## Chapter 6: Primitive and Built-In Types
+
+<details>
+  <summary>Primitive Types</summary>
+  In JavaScript, primitive types are values that are not objects and do not have methods or properties. The seven primitive types are:
+
+- **Number**
+- **String**
+- **Boolean**
+- **Undefined**
+- **Null**
+- **BigInt**
+- **Symbol**
+
+#### Immutability of Primitives
+
+- **Immutability:** Primitive values are immutable. You cannot change the value itself, only reassign variables to new values.
+- **Example:**
+
+    ```javascript
+    let name = 'simon';
+    let copy = name;
+    name = name.toUpperCase();
+    // name => "SIMON"
+    // copy => "simon"
+    ```
+
+#### Primitive Wrappers
+
+- **Primitive Wrappers:** JavaScript wraps primitive values in their respective wrapper objects (e.g., `String`, `Number`) to allow access to methods. Wrapping occurs at the time of property access.
+- **Wrapper Objects:** While you can create wrapper objects yourself, adding properties to them is not recommended as it is considered an anti-pattern.
+
+    ```javascript
+    const name = new String('James');
+    name.surname = 'Padolsey'; // Anti-pattern
+    ```
+
+- **Casting:** Invoking wrapper constructors as functions casts values to a different type:
+
+    ```javascript
+    String(123); // "123"
+    Number("2"); // 2
+    Boolean(0); // false
+    ```
+
+#### Falsy Primitives
+
+- **Falsy Values:** Values that evaluate to `false` in Boolean contexts. There are eight falsy values:
+
+    - `null`
+    - `undefined`
+    - `+0 or -0` (zero)
+    - `false` (Boolean)
+    - `""` (empty string)
+    - `0n` (BigInt zero)
+    - `NaN` (Not-a-Number)
+
+- **Truthy Values:** All values that are not falsy.
+
+- **Example:**
+
+    ```javascript
+    if (0) {
+        // This will not run. 0 is falsy.
+    }
+    if (1) {
+        // This will run. 1 is truthy.
+    }
+    ```
+
+#### Best Practices
+
+- **Be Explicit:** When checking for values, especially in conditional or logical contexts, be explicit to avoid unexpected behavior from falsy values.
+
+    ```javascript
+    if (person.age === null || person.age === undefined) {
+        processIdentity(person);
+    }
+    ```
+
+</details>
+
+
+<details>
+  <summary>Number</summary>
+  
+ The `Number` primitive type in JavaScript is used to represent numerical data and is stored in the double-precision 64-bit floating-point format (IEEE 754). The format is divided into three parts:
+
+- **1 bit** for the sign (positive or negative)
+- **11 bits** for the exponent (position of the decimal point)
+- **52 bits** for the fraction or significand (integer value)
+
+#### Zero Values
+
+- **Positive Zero (+0) and Negative Zero (-0):** In JavaScript, both are considered equal (`+0 === -0`) and both are falsy.
+
+#### Precision and Limits
+
+- **Safe Integer Range:** JavaScript can safely represent integers between `Number.MIN_SAFE_INTEGER` and `Number.MAX_SAFE_INTEGER`:
+
+    ```javascript
+    Number.MAX_SAFE_INTEGER; // 9007199254740991
+    Number.MIN_SAFE_INTEGER; // -9007199254740991
+    ```
+
+- **Precision Loss:** Beyond these bounds, integer precision is lost. For example:
+
+    ```javascript
+    const max = Number.MAX_SAFE_INTEGER;
+    max + 1; // => 9007199254740992 (correct)
+    max + 2; // => 9007199254740992 (incorrect)
+    ```
+
+- **BigInt:** For numbers beyond this range, use `BigInt`:
+
+    ```javascript
+    const max = BigInt(Number.MAX_SAFE_INTEGER);
+    max + 1n; // => 9007199254740992n (correct)
+    ```
+
+#### Floating-Point Precision
+
+- **Decimal Precision Issues:** Due to floating-point representation, some decimals may have precision issues:
+
+    ```javascript
+    0.1 + 0.2; // => 0.30000000000000004
+    ```
+
+- **Comparison:** Use `Number.EPSILON` to handle precision errors in comparisons:
+
+    ```javascript
+    const someValue = 0.1 + 0.2;
+    if (Math.abs(someValue - 0.3) < Number.EPSILON) {
+        // someValue is effectively equal to 0.3
+    }
+    ```
+
+- **Integer Conversion:** Convert decimals to integers for precise calculations:
+
+    ```javascript
+    const unwieldyDecimalValue = 0.12345678;
+    unwieldyDecimalValue * 1e8; // => 12345678
+    ```
+
+#### Special Values
+
+- **NaN (Not-a-Number):** Represents a failed number conversion:
+
+    ```javascript
+    Number('wow'); // NaN
+    ```
+
+    Check for valid numbers:
+
+    ```javascript
+    if (typeof myNumber === 'number' && !isNaN(myNumber)) {
+        // Do something with the number
+    }
+    ```
+
+- **Infinity and -Infinity:** Represent overflow in mathematical operations:
+
+    ```javascript
+    100 / 0; // => Infinity
+    100 / -0; // => -Infinity
+    ```
+
+    Check for Infinity:
+
+    ```javascript
+    100 / 0 === Infinity; // => true
+    ```
+
+</details>
+
+
+<details>
+  <summary>String</summary>
+  
+ The `String` type in JavaScript represents sequences of characters and is used for text-like content. Strings can be delimited by:
+
+- **Single quotes:** `'Titanic'`
+- **Double quotes:** `"Ship"`
+- **Backticks (template literals):** 
+    ```javascript
+    const report = `
+    RMS Titanic was a British passenger liner...
+    `;
+    ```
+
+#### Multi-line Strings
+
+- **Single and Double Quotes:** Use escaped newlines (`\`):
+
+    ```javascript
+    const a = "example of a \
+    string with escaped newline \
+    characters";
+    ```
+
+- **Template Literals:** Naturally support multi-line strings and expression interpolation:
+
+    ```javascript
+    const nBreadLoaves = 4;
+    const breadLoafCost = 2.40;
+    const message = `
+    I bought ${nBreadLoaves} loaves of bread for ${nBreadLoaves * breadLoafCost} euros.
+    `;
+    ```
+
+#### Unicode
+
+- **UTF-16 Encoding:** JavaScript strings are sequences of 16-bit integers (UTF-16 code units). Most characters are represented by a single code unit, but some, like emojis, require surrogate pairs.
+
+    - **Example:** Panda emoji requires two UTF-16 code units: U+D83D and U+DC3C.
+
+- **Combining Characters:** Some characters can be combined to form new symbols. For example, accents can be added to letters using combining characters:
+
+    ```javascript
+    const accentedLetter = 'a\u0303'; // "ã"
+    ```
+
+- **Escape Sequences:**
+    - **Basic Multilingual Plane (BMP):** Use `\uXXXX` for characters between U+0000 and U+FFFF.
+    - **Supplementary Planes:** Use `\u{X}` for characters between U+010000 and U+10FFFF.
+
+    ```javascript
+    const pandaEmoji = '\u{1F43C}'; // 🐼
+    ```
+
+#### Length Property
+
+- **Length vs. Actual Characters:** The `length` property returns the number of UTF-16 code units, not the number of characters or grapheme clusters. This can be misleading for strings containing surrogate pairs or complex symbols.
+
+    ```javascript
+    'fox'.length; // 3
+    '12345'.length; // 5
+    '😊'.length; // 2 (surrogate pair)
+    ```
+
+
+</details>
+
+
+<details>
+  <summary>Boolean</summary>
+  
+  The `Boolean` primitive type represents two values: `true` and `false`.
+
+#### Usage
+
+- **Semantics:** Represents binary states like on/off or yes/no. Commonly used in control flow:
+
+    ```javascript
+    const age = 100;
+    const hasLivedTo100 = age >= 100;
+    if (hasLivedTo100) {
+        console.log('Congratulations on living to 100!');
+    }
+    ```
+
+#### Wrapping
+
+- **Boolean Object:** The `Boolean` primitive can be wrapped in an object:
+
+    ```javascript
+    const isTrueObj = new Boolean(true);
+    const isFalseObj = new Boolean(false);
+    ```
+
+- **Behavior in Conditionals:** When used as an object, the `Boolean` instance will always evaluate to `true` in conditionals, regardless of its primitive value:
+
+    ```javascript
+    if (isFalseObj) {
+        // This will run
+    }
+    ```
+
+- **Recommendation:** Avoid wrapping Boolean values in objects. It’s an anti-pattern and can lead to unexpected behavior.
+
+#### Logical Operators
+
+- **Logical Operators:** Boolean values are commonly returned by logical operators such as `>=` and `===`.
+
+    ```javascript
+    const result = (5 >= 3); // true
+    const isEqual = (5 === 5); // true
+    ```
+
+
+</details>
+
+<details>
+  <summary>BigInt</summary>
+  
+ The `BigInt` type in JavaScript is used for representing integers of arbitrary precision, allowing for storage and operations on very large integers that exceed the precision of the `Number` type.
+
+#### Declaration
+
+- **Syntax:** BigInt literals are declared by appending `n` to the end of an integer:
+
+    ```javascript
+    const largeNumber = 100007199254740991n;
+    ```
+
+#### Features
+
+- **Arbitrary Precision:** Can represent integers of unlimited length, useful for applications needing high-accuracy integers, such as financial calculations.
+
+- **Operations:** BigInt values can be used with arithmetic operators, but only if both operands are BigInts:
+
+    ```javascript
+    const result = (1n + (2n * 3n)) + 4n; // => 11n
+    ```
+
+- **Type Compatibility:** BigInt cannot be used directly with JavaScript's native `Math` methods or mixed with `Number` types:
+
+    ```javascript
+    Math.abs(1n); // TypeError: Cannot convert a BigInt value to a number
+    1n + 1; // TypeError: Cannot mix BigInt and other types, use explicit conversions
+    ```
+
+#### Summary
+
+- **Usage:** BigInt is ideal for scenarios requiring precise integer representation beyond the limits of the Number type.
+- **Compatibility:** Ensure operations involve only BigInt values to avoid TypeErrors.
+
+</details>
+
+<details>
+  <summary>Symbol</summary>
+  
+  A `Symbol` is a primitive type used to create unique values that can be used as property keys. Each `Symbol` is guaranteed to be unique and can be used to add metadata or private properties to objects.
+
+#### Creation
+
+- **Syntax:** Symbols are created using the `Symbol` function. An optional description can be provided for debugging purposes:
+
+    ```javascript
+    const uniqueKey = Symbol();
+    const annotatedKey = Symbol('Description');
+    ```
+
+#### Features
+
+- **Uniqueness:** Each Symbol is unique, meaning two Symbols created with the same description will still be different:
+
+    ```javascript
+    const key1 = Symbol('key');
+    const key2 = Symbol('key');
+    console.log(key1 === key2); // => false
+    ```
+
+- **Object Properties:** Symbols can be used as keys for object properties. These properties are not enumerated by default object iteration methods like `for...in`:
+
+    ```javascript
+    const obj = {};
+    obj[Symbol('hidden')] = 'value';
+    for (let key in obj) console.log(key); // Does not log the Symbol key
+    ```
+
+- **Retrieval:** To access properties keyed by Symbols, use `Object.getOwnPropertySymbols`:
+
+    ```javascript
+    const symbols = Object.getOwnPropertySymbols(obj);
+    console.log(obj[symbols[0]]); // => 'value'
+    ```
+
+- **Use Cases:** Symbols are useful for defining unique properties or metadata on objects, and for implementing private or hidden properties. They can also be used for custom behavior, such as defining a custom iterator with `Symbol.iterator`.
+
+#### Example
+
+Symbols can be used for unique property keys and custom behaviors:
+
+```javascript
+const log = thing => {
+    console.log(
+        thing[log.CUSTOM_RENDER] ?
+        thing[log.CUSTOM_RENDER](thing) :
+        thing
+    );
+};
+log.CUSTOM_RENDER = Symbol();
+
+class Person {
+    constructor(name) {
+        this.name = name;
+        this[log.CUSTOM_RENDER] = () => `Person (name = ${this.name})`;
+    }
+}
+
+log(123); // Logs: "123"
+log(new Person('Sarah')); // Logs: "Person (name = Sarah)"
+```
+#### Summary
+- **Uniqueness**: Symbols are always unique and useful for non-enumerable properties.
+- **Usage**: Ideal for creating unique keys for object properties, private metadata, and custom object behaviors.
+
+</details>
+
+<details>
+  <summary>null</summary>
+  
+ The `null` primitive type represents the intentional absence of a value. It is used to explicitly indicate that a value is not available or has not been set.
+
+#### Key Points
+
+- **Single Value:** `null` is a type with a single value, which is `null`.
+- **Intentional Absence:** Unlike `undefined`, which signifies a value that is not defined, `null` is used to denote that a value is deliberately absent.
+  
+    ```javascript
+    const features = {
+        hasWifi: false,
+        hasDisabledAccess: true,
+        hasParking: null
+    };
+    ```
+
+- **Falsy Value:** `null` is always falsy in Boolean contexts, meaning it evaluates to `false` in conditionals:
+
+    ```javascript
+    if (features.hasParking) {
+        // This will not run as hasParking is null
+    }
+    ```
+
+- **Explicit Checks:** To distinguish between `null` and `undefined`, it's advisable to perform explicit checks:
+
+    ```javascript
+    if (features.hasParking !== null && features.hasParking !== undefined) {
+        // hasParking is available...
+    } else {
+        // hasParking is not set (undefined) or unavailable (null)
+    }
+    ```
+
+- **Abstract Equality Comparison:** Using the abstract equality operator `==` can check for both `null` and `undefined`:
+
+    ```javascript
+    if (features.hasParking != null) {
+        // hasParking is available...
+    } else {
+        // hasParking is not set (undefined) or unavailable (null)
+    }
+    ```
+
+- **Typeof Operator:** Be cautious with the `typeof` operator. Due to JavaScript's legacy behavior, `typeof null` returns `"object"`, which can be misleading:
+
+    ```javascript
+    typeof null; // => "object"
+    ```
+
+#### Summary
+
+- **Use Case:** `null` is used to explicitly represent the absence of a value.
+- **Checks:** Prefer explicit checks (e.g., `value === null`) to ensure clarity and avoid bugs.
+- **Behavior:** `null` is falsy and can be compared with `undefined` using `==` for succinctness, though explicit checks are recommended for clarity.
+
+</details>
+
+<details>
+  <summary>undefined</summary>
+  
+ The `undefined` primitive type indicates that a value is not defined or is missing. It represents the absence of a value that should be explicitly set.
+
+#### Key Points
+
+- **Single Value:** `undefined` is a type with only one value, which is `undefined`. It is used to signify that a value has not been initialized or does not exist:
+
+    ```javascript
+    const coffee = {
+        type: 'Flat White',
+        shots: 2
+    };
+    coffee.name; // => undefined
+    coffee.type; // => "Flat White"
+    ```
+
+- **Implicit Setting:** Unlike `null`, `undefined` should not be explicitly set. It is automatically assigned by JavaScript when a variable or object property is declared but not initialized:
+
+    ```javascript
+    let someVar;
+    console.log(someVar); // => undefined
+    ```
+
+- **ReferenceError vs. Undefined:** If an identifier is not declared, accessing it will result in a `ReferenceError`. Accessing a non-existent property on an object, however, will return `undefined`:
+
+    ```javascript
+    // ReferenceError
+    thisDoesNotExist; // !! ReferenceError: thisDoesNotExist is not defined
+
+    const obj = {};
+    console.log(obj.foo); // => undefined
+
+    // TypeError
+    console.log(obj.foo.baz); // !! TypeError: Cannot read property 'baz' of undefined
+    ```
+
+- **Global Value:** `undefined` is a globally available value in JavaScript. It is not a literal and should not be reassigned. Reassigning `undefined` in local scopes can lead to unexpected results:
+
+    ```javascript
+    let undefined = 1;
+    console.log(undefined); // => 1
+
+    // Avoid this anti-pattern
+    ```
+
+- **Reliable `undefined`:** To avoid issues with reassigning `undefined`, use the `void` operator or `typeof` operator to reliably check for `undefined` values:
+
+    ```javascript
+    void 0; // => undefined
+    void null; // => undefined
+    void undefined; // => undefined
+
+    // Safe check for undefined
+    if (typeof myValue === 'undefined') { ... }
+    ```
+
+- **Linting Tools:** Use linting tools to enforce correct usage of `undefined` and avoid potential pitfalls.
+
+#### Summary
+
+- **Use Case:** `undefined` represents variables or properties that are not defined or initialized.
+- **Avoid Assigning:** Do not assign `undefined` to variables; use `null` instead for intentional absence.
+- **Explicit Checks:** Always explicitly check for `undefined` using `typeof`.
+</details>
+
+<details>
+  <summary>Objects</summary>
+  
+  In JavaScript, everything that is not a primitive value is considered an object. This includes plain objects, arrays, functions, and more. Objects are fundamental for storing collections of data and representing complex entities.
+
+#### Plain Objects
+
+A plain object is commonly created using an object literal, which is a set of key-value pairs enclosed in curly braces:
+
+```javascript
+const animal = {
+    name: 'Duck',
+    hobby: 'Paddling'
+};
+```
+#### Object Constructor
+You can also create objects using the Object constructor. This method is less common but still valid:
+
+```javascript
+const animal = new Object();
+animal.name = 'Duck';
+animal.hobby = 'Paddling';
+```
+#### Object Literals vs. Object Constructor
+- **Object Literals**: Preferred for most situations due to their simplicity and readability. They allow you to define and initialize an object in a single expression.
+
+```javascript
+const person = {
+    firstName: 'John',
+    lastName: 'Doe'
+};
+```
+- **Object Constructor**: Less commonly used, but useful for creating objects dynamically or when adding properties later.
+
+```javascript
+const person = new Object();
+person.firstName = 'John';
+person.lastName = 'Doe';
+```
+#### Key Points
+- **Properties and Methods**: Objects can have properties (key-value pairs) and methods (functions as values).
+
+```javascript
+const car = {
+    make: 'Toyota',
+    model: 'Corolla',
+    start: function() {
+        console.log('Car started');
+    }
+};
+
+car.start(); // => Car started
+```
+- **Prototype**: All objects in JavaScript inherit properties and methods from a prototype. This prototype-based inheritance is a core feature of JavaScript's object model.
+
+#### Summary
+- **Object Creation**: Use object literals for simplicity and readability. Use the Object constructor when dynamically creating objects or when needed.
+- **Object Use**: Objects are used to group related data and functionality together. They are foundational to JavaScript programming
+
+</details>
+
+<details>
+  <summary>Property Names</summary>
+  
+In JavaScript, property names (or keys) used in objects are stored as strings. However, when using object literals, you can declare keys using regular identifiers, number literals, or string literals. Here’s how you can define property names:
+
+```javascript
+const object = {
+    foo: 123,         // Using an identifier as the key
+    "baz": 123,       // Using a String literal as the key
+    123: 123          // Using a Number literal as the key
+};
+```
+#### Accessing Properties
+- **Identifiers**: Preferred for readability and ease of access. Properties defined with identifiers can be accessed using dot notation:
+
+```javascript
+const data = {
+    hobbies: ['tennis', 'kayaking']
+};
+data.hobbies; // => ['tennis', 'kayaking']
+```
+- **String Literals**: If the key is not a valid identifier, you must use square-bracket notation:
+
+```javascript
+const data = {
+    'my hobbies': ['tennis', 'kayaking']
+};
+data['my hobbies']; // => ['tennis', 'kayaking']
+```
+- **Number Literals**: When using number literals as keys, they are automatically converted to strings:
+
+```javascript
+const data = {
+    123: 'numeric key'
+};
+data[123]; // => 'numeric key'
+```
+
+#### Computed Property Names
+- You can use computed property names with square brackets to dynamically add properties to an object literal:
+
+```javascript
+const data = {
+    ['item' + (1 + 2)]: 'foo'
+};
+console.log(data); // => { item3: 'foo' }
+console.log(data.item3); // => 'foo'
+```
+
+#### Objects as Key-Value Stores
+- Objects can store arbitrary values as properties, making them useful for key-value pairs. However, since all keys are internally stored as strings, you might need to use string representations of non-primitive values:
+
+```javascript
+const me = {
+    name: 'James',
+    location: 'England',
+    toString() {
+        return [this.name, this.location].join(', ');
+    }
+};
+console.log(me.toString()); // => "James, England"
+console.log(String(me)); // => "James, England"
+```
+#### Using Objects with String Coercion
+- When an object is used in a context that requires a string, such as when used as a key in another object, its toString method is called:
+
+```javascript
+const peopleInEurope = {};
+peopleInEurope[me] = true;
+console.log(Object.keys(peopleInEurope)); // => ["James, England"]
+console.log(peopleInEurope[me]); // => true
+```
+#### Modern Alternatives
+- Using Map or WeakMap is preferred for cases where keys need to be non-primitive or more complex:
+
+- **Map**: Provides a way to use objects or other values as keys, preserving their identity.
+
+- **WeakMap**: Stores key-value pairs where the keys are objects and are garbage-collected when no longer in use.
+
+- This approach allows for more robust handling of key-value pairs where the key is not just a string.
+
+</details>
+
+<details>
   <summary>Evolution</summary>
   
   - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
@@ -1346,6 +2175,13 @@ class MyDataStructure {
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -1355,6 +2191,13 @@ class MyDataStructure {
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -1364,6 +2207,13 @@ class MyDataStructure {
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -1373,7 +2223,6 @@ class MyDataStructure {
 
 </details>
 
-
 <details>
   <summary>Evolution</summary>
   
@@ -1382,7 +2231,6 @@ class MyDataStructure {
 
 </details>
 
-
 <details>
   <summary>Evolution</summary>
   
@@ -1390,16 +2238,6 @@ class MyDataStructure {
   - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
 
 </details>
-
-
-<details>
-  <summary>Evolution</summary>
-  
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
-
-</details>
-
 
 <details>
   <summary>Evolution</summary>
