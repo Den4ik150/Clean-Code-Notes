@@ -2558,7 +2558,7 @@ const greet = () => console.log(this);
  ```
 2. **Constructors**:
 
-- **Behavior**: When a function is invoked with `new`, `this   is a new object with its `[[Prototype]]` set to the function's prototype property.
+- **Behavior**: When a function is invoked with `new`, `this`   is a new object with its `[[Prototype]]` set to the function's prototype property.
 - **Example**:
  ```javascript
 function Person(name) {
@@ -2572,7 +2572,7 @@ const person = new Person('Alice');
  ```javascript
 const sayHelloToTokyo = sayMyName.bind(tokyo);
 sayHelloToTokyo(); // Logs: "My name is Tokyo"
-
+ ```
 - **call()** and **apply()**: Invoke a function with this set to a specific value.
 
  ```javascript
