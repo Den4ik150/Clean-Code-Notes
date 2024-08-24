@@ -1201,11 +1201,32 @@ Key Points:
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>Needlessly Exotic Names</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+  **Needlessly exotic names** are those that draw unnecessary attention to themselves and are often obscure, making the code difficult to understand. They may seem clever or unique, but they detract from the clarity and simplicity needed in clean code.
 
+#### Example of Poor Naming:
+```javascript
+function deStylizeParameters(params) {
+    disEntangleParams(params, p => !!p.style).obliterate();
+}
+```
+In this example, terms like deStylize, disEntangle, and obliterate are needlessly exotic, making the code harder to comprehend.
+
+#### Improved Naming:
+```javascript
+function removeStylingFromParams(params) {
+    filterParams(params, param => !!param.style).remove();
+}
+```
+Simpler names like removeStyling and filterParams make the code more understandable.
+
+Key Points:
+- Names should be boring: Avoid names that draw unnecessary attention or seem clever.
+- Avoid fancy synonyms: Use simple, well-known terms instead of exotic or longer synonyms (e.g., use delete instead of obliterate).
+- Avoid non-existent words: Avoid making up words like deletify or elementize.
+- Avoid puns or clever references: Stick to straightforward names rather than using puns or cultural references that may not be universally understood.
+#### The goal is to make code accessible to the widest audience possible by using descriptive and clear names.
 </details>
 
 <details>
