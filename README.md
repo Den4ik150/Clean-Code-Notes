@@ -2296,10 +2296,76 @@ Most of the time, a plain object will suffice for storing key-value pairs, but `
 </details>
 
 <details>    
-  <summary>Evolution</summary>
+  <summary>The Prototype</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+  JavaScript uses prototypes for inheritance. Each object has an internal property called `[[Prototype]]`. When a property is accessed, JavaScript looks for it on the object, and if not found, it traverses up the prototype chain.
+
+### Basic Usage
+
+1. **Creating a Prototype:**
+
+   ```javascript
+   const engineerPrototype = {
+     type: 'Engineer',
+     sayHello() {
+       return `Hello, I'm ${this.name} and I'm an ${this.type}`;
+     }
+   };
+   ```
+2. **Using Object.create**:
+
+```javascript
+const pandaTheEngineer = Object.create(engineerPrototype);
+pandaTheEngineer.name = 'Panda';
+console.log(pandaTheEngineer.sayHello()); // => "Hello, I'm Panda and I'm an Engineer"
+```
+3. **Modifying Prototypes**:
+```javascript
+engineerPrototype.sayGoodbye = () => 'Goodbye!';
+console.log(pandaTheEngineer.sayGoodbye()); // => "Goodbye!"
+```
+4. **Overriding Methods**:
+```javascript
+pandaTheEngineer.sayHello = () => 'Yo!';
+console.log(pandaTheEngineer.sayHello()); // => "Yo!"
+```
+5. **Inspecting Prototypes:**
+
+```javascript
+Object.getPrototypeOf(pandaTheEngineer) === engineerPrototype; // => true
+```
+
+#### Class Syntax
+- Modern JavaScript uses class syntax, which simplifies prototype-based inheritance:
+
+```javascript
+class Engineer {
+  type = 'Engineer';
+  constructor(name) {
+    this.name = name;
+  }
+  sayHello() {
+    return `Hello, I'm ${this.name} and I'm an ${this.type}`;
+  }
+}
+const pandaTheEngineer = new Engineer();
+```
+- Instance vs Prototype:
+- **Instance properties**: name
+- **Prototype properties**: type, sayHello
+
+#### Avoid Modifying Native Prototypes
+- Modifying native prototypes can lead to conflicts. Instead, extend native types with subclasses:
+
+```javascript
+class HeartArray extends Array {
+  join() {
+    return super.join(' ❤ ');
+  }
+}
+const yay = new HeartArray('this', 'is', 'lovely');
+console.log(yay.join()); // => "this ❤ is ❤ lovely"
+```
 
 </details>
 
