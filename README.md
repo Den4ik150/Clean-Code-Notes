@@ -2441,20 +2441,20 @@ class Thing {
 ##### Syntactic Contexts
 1. **Statement**
 
-- Example: function myFunction() {}
+- Example: `function myFunction() {}`
 - Description: Functions declared as statements are hoisted and can be used before they appear in the code.
 2. **Expression**
 
-- Example: const myFunction = function() {};
+- Example: `const myFunction = function() {};`
 - Description: Functions declared as expressions are not hoisted and can be used only after their declaration.
 3. **Method Definition**
 
-- Example: myMethod() {}
+- Example: `myMethod() {}`
 - Description: Methods defined within objects or classes.
 #### Key Points
-- Hoisting: Function declarations are hoisted, allowing their use before declaration. Function expressions and fat-arrow functions are not hoisted.
-- Naming: Function expressions can be named or anonymous. Named function expressions can have their own name, while fat-arrow functions are always anonymous.
-- Context: Methods are specific to object literals and class definitions.
+- **Hoisting**: Function declarations are hoisted, allowing their use before declaration. Function expressions and fat-arrow functions are not hoisted.
+- **Naming**: Function expressions can be named or anonymous. Named function expressions can have their own name, while fat-arrow functions are always anonymous.
+- **Context**: Methods are specific to object literals and class definitions.
 
 </details>
 
