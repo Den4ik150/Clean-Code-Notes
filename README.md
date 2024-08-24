@@ -2459,18 +2459,127 @@ class Thing {
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>Function bindings and this</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+### Key Bindings
 
+1. **`this`**
+   - **Description:** Refers to the execution context of the function. The value of `this` depends on how the function is invoked.
+   - **Examples:**
+     ```javascript
+     function show() {
+       console.log(this);
+     }
+     show(); // `this` depends on the calling context
+     ```
+
+2. **`super`**
+   - **Description:** Refers to the superclass in a method or constructor. Used to call methods or access properties from the superclass.
+   - **Examples:**
+     ```javascript
+     class Animal {
+       speak() {
+         console.log('Animal speaks');
+       }
+     }
+     class Dog extends Animal {
+       speak() {
+         super.speak(); // Calls the speak method of Animal
+         console.log('Dog barks');
+       }
+     }
+     ```
+
+3. **`new.target`**
+   - **Description:** Indicates whether the function was invoked as a constructor with the `new` operator.
+   - **Examples:**
+     ```javascript
+     function MyClass() {
+       console.log(new.target); // Outputs: MyClass if called with new, undefined otherwise
+     }
+     new MyClass(); // MyClass
+     MyClass(); // undefined
+     ```
+
+4. **`arguments`**
+   - **Description:** Provides access to the arguments passed to the function. Not available in arrow functions.
+   - **Examples:**
+     ```javascript
+     function sum() {
+       let total = 0;
+       for (let arg of arguments) {
+         total += arg;
+       }
+       return total;
+     }
+     sum(1, 2, 3); // 6
+     ```
+
+### Arrow Functions
+
+- **Behavior:** Arrow functions do not have their own `this`, `super`, `new.target`, or `arguments`. They inherit these bindings from their parent scope.
+- **Examples:**
+  ```javascript
+  const arrowFunction = () => {
+    console.log(this); // `this` is inherited from the outer scope
+  };
+  ```
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>Execution context</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+  ### `this` Keyword
+
+- **Determination:** The value of `this` is determined at the call time of the function and refers to the object the function is invoked on.
+- **Example:**
+  ```javascript
+  const london = { name: 'London' };
+  const tokyo = { name: 'Tokyo' };
+  function sayMyName() {
+    console.log(`My name is ${this.name}`);
+  }
+  sayMyName(); // Logs: "My name is undefined"
+  london.sayMyName = sayMyName;
+  london.sayMyName(); // Logs: "My name is London"
+  tokyo.sayMyName = sayMyName;
+  tokyo.sayMyName(); // Logs: "My name is Tokyo"
+   ```
+#### Global Context
+- **Browser**: In the global scope, this refers to the window object.
+- **Node.js**: In the global context, this refers to the module's exports.
+#### Special Cases
+1. **Arrow Functions**:
+
+- **Behavior**: Arrow functions inherit this from their surrounding lexical scope.
+- **Example**:
+ ```javascript
+const greet = () => console.log(this);
+ ```
+2. **Constructors**:
+
+- **Behavior**: When a function is invoked with `new`, `this   is a new object with its `[[Prototype]]` set to the function's prototype property.
+- **Example**:
+ ```javascript
+function Person(name) {
+  this.name = name;
+}
+const person = new Person('Alice');
+ ```
+#### Forcing this
+- **bind()**: Creates a new function with `this` set to a specific value.
+
+ ```javascript
+const sayHelloToTokyo = sayMyName.bind(tokyo);
+sayHelloToTokyo(); // Logs: "My name is Tokyo"
+
+- **call()** and **apply()**: Invoke a function with this set to a specific value.
+
+ ```javascript
+tokyo.sayMyName.call(london); // Logs: "My name is London"
+ ```
+#### Best Practices
+- Avoid Complex Invocation: Use methods like call, apply, and bind sparingly in higher-level logic to maintain code clarity. Rely on more straightforward function calls when possible.
 
 </details>
 
