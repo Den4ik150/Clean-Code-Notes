@@ -1166,7 +1166,8 @@ Names are the first lens through which abstractions are viewed. Poor naming choi
 
 #### Example of Poor Naming:
 
-```function incId(id, f) {
+```javascript
+function incId(id, f) {
     for (let x = 0; x < ids.length; ++x) {
         if (ids[x].id === id && f(ids[x])) {
             ids[x].n++;
@@ -1180,7 +1181,8 @@ In this example, single-letter variables (e.g., f, x, n) and an abbreviated func
 
 #### Improved Naming:
 
-```function incrementJobInstancesByIdIfFilter(id, filter) {
+```javascript
+function incrementJobInstancesByIdIfFilter(id, filter) {
     for (let i = 0; i < jobs.length; i++) {
         let job = jobs[i];
         if (job.id === id && filter(job)) {
