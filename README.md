@@ -2160,22 +2160,142 @@ console.log(peopleInEurope[me]); // => true
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>Property Descriptors</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+  In JavaScript, when adding properties to objects using object literals or property access, the properties have implicit traits:
+
+- **configurable:** Allows the property to be deleted from the object or its descriptor to be changed.
+- **enumerable:** Indicates whether the property will appear in enumerations like `for...in` and `Object.keys()`.
+- **writable:** Determines if the property's value can be changed via assignment (e.g., `obj.prop = ...`).
+
+### Setting Property Descriptors
+
+You can define or modify these traits using the `Object.defineProperty()` method. By default, traits are set to `false`, so you need to specify them explicitly if needed:
+
+```javascript
+const myObject = {};
+Object.defineProperty(myObject, 'name', {
+    writable: false,
+    configurable: false,
+    enumerable: true,
+    value: 'The Unchangeable Name'
+});
+
+console.log(myObject.name); // => "The Unchangeable Name"
+myObject.name = 'something else'; // No effect
+console.log(myObject.name); // => "The Unchangeable Name"
+delete myObject.name; // No effect
+console.log(myObject.name); // => "The Unchangeable Name"
+```
+- You can also use Object.defineProperties() to define multiple properties at once:
+
+```javascript
+const chocolate = Object.defineProperties({}, {
+    name: { value: 'Chocolate', enumerable: false },
+    tastes: { value: ['Bitter', 'Sweet'], enumerable: true }
+});
+
+console.log(chocolate.name); // => "Chocolate"
+console.log(chocolate.tastes); // => ["Bitter", "Sweet"]
+console.log(Object.keys(chocolate)); // => ["tastes"]
+```
+#### Handling Configurability
+- If a property is marked as non-configurable, attempting to redefine or change its traits will throw a TypeError:
+
+```javascript
+const obj = {};
+Object.defineProperty(obj, 'timestamp', {
+    configurable: false,
+    value: Date.now()
+});
+
+Object.defineProperty(obj, 'timestamp', {
+    configurable: true
+});
+// ! TypeError: Cannot redefine property: timestamp
+```
+#### Getters and Setters
+- You can define custom setters and getters for properties. Getters return a value when the property is accessed, while setters handle assignments:
+
+```javascript
+const data = Object.defineProperties({}, {
+    name: {
+        set(name) { this.normalizedName = name.toLowerCase(); },
+        get() { return this.normalizedName; }
+    }
+});
+
+data.name = 'MoLLy BroWn';
+console.log(data.name); // => "molly brown"
+```
+- In this example, name is not enumerable, writable, or configurable. Instead, the internal normalizedName is used for storage:
+
+```javascript
+console.log(Object.keys(data)); // => ["normalizedName"]
+```
+#### Defining Getters and Setters in Object Literals or Classes
+- You can define getters and setters directly within object literals or class definitions. For example, a custom subclass of Array with a last getter:
+
+```javascript
+class SpecialArray extends Array {
+    get last() { return this[this.length - 1]; }
+}
+
+const myArray = new SpecialArray('a', 'b', 'c', 'd');
+console.log(myArray.last); // => "d"
+myArray.push('e');
+console.log(myArray.last); // => "e"
+```
+#### Best Practices
+- **Principle of Least Astonishment (POLA)**: Ensure that custom behaviors or properties align with user expectations to avoid surprises or bugs.
+- **Consistency**: Follow natural language semantics and maintain consistency in property behavior and custom methods.
+By keeping these practices in mind, you can ensure that your use of property descriptors and custom getters/setters is clear, predictable, and maintainable.
 
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>Map and WeakMap</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+ `Map` and `WeakMap` are JavaScript abstractions for storing key-value pairs. Unlike regular objects, where keys are limited to strings and symbols, `Map` and `WeakMap` can use any value as a key, including non-primitive values.
+
+### Map
+
+A `Map` object allows you to store key-value pairs where both keys and values can be of any type:
+
+```javascript
+const populationBySpecies = new Map();
+const reindeer = { name: 'Reindeer', formalName: 'Rangifer tarandus' };
+populationBySpecies.set(reindeer, 2000000);
+
+console.log(populationBySpecies.get(reindeer)); // => 2,000,000
+```
+- Key Characteristics:
+- Keys and values can be of any type.
+- Keys are ordered by insertion.
+- Iteration is done in insertion order.
+#### WeakMap
+`WeakMap` is similar to `Map` but holds weak references to keys, meaning that if an object used as a key is garbage-collected, it will not be held in memory by the WeakMap. This helps prevent memory leaks when dealing with temporary or disposable keys.
+
+```javascript
+const weakMap = new WeakMap();
+const obj = { name: 'Temporary Object' };
+weakMap.set(obj, 'Some value');
+
+// After `obj` is no longer in use and is garbage-collected, the entry in `weakMap` is also removed.
+```
+- Key Characteristics:
+- Keys must be objects (not primitive values).
+- Key references are weak; if the object is garbage-collected, the key-value pair is removed from the WeakMap.
+- Does not support iteration or retrieval of all keys/values.
+#### When to Use Map or WeakMap
+- Map if you need a collection where keys can be of any type and you need predictable iteration order or access to all key-value pairs.
+
+- Use WeakMap if you need to associate data with objects where the associated data should not prevent the object from being garbage-collected.
+Most of the time, a plain object will suffice for storing key-value pairs, but `Map` and `WeakMap` provide specialized functionality for more advanced scenarios.
 
 </details>
 
-<details>
+<details>    
   <summary>Evolution</summary>
   
   - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
