@@ -1165,8 +1165,8 @@ Names are the first lens through which abstractions are viewed. Poor naming choi
   **Needlessly short names** often rely on program-specific or domain-specific knowledge that may not be clear to others. They can obscure the purpose, concept, and contract of the code, making it difficult to understand the intent behind it. 
 
 #### Example of Poor Naming:
-```javascript
-function incId(id, f) {
+
+```function incId(id, f) {
     for (let x = 0; x < ids.length; ++x) {
         if (ids[x].id === id && f(ids[x])) {
             ids[x].n++;
@@ -1177,9 +1177,10 @@ function incId(id, f) {
 
 In this example, single-letter variables (e.g., f, x, n) and an abbreviated function name (incId) make the code difficult to comprehend.
 
-```
-Improved Naming:
-function incrementJobInstancesByIdIfFilter(id, filter) {
+
+#### Improved Naming:
+
+```function incrementJobInstancesByIdIfFilter(id, filter) {
     for (let i = 0; i < jobs.length; i++) {
         let job = jobs[i];
         if (job.id === id && filter(job)) {
