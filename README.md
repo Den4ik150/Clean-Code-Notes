@@ -2584,10 +2584,87 @@ tokyo.sayMyName.call(london); // Logs: "My name is London"
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>The `super` Keyword</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+ The `super` keyword is used in class definitions and object literals to interact with a superclass's properties and methods. It has three distinct uses:
+
+1. **`super()`**: Calls the superclass's constructor. Must be called within a subclass's constructor and before accessing `this`.
+   ```javascript
+   class Banana extends Fruit {
+     constructor() {
+       super(); // Calls the Fruit constructor
+     }
+   }
+   ```
+2. **`super.property`**: Accesses a property on the superclass. Valid within methods defined using method definitions or constructors.
+
+```javascript
+const utils = {
+  method() {
+    return super.property; // Accesses a superclass property
+  }
+};
+```
+3. **`super.method()`**: Invokes a method on the superclass. Can be used in methods defined with method definitions or constructors.
+
+```javascript
+const Utils = {
+  method() {
+    super.method(); // Calls a superclass method
+  }
+};
+```
+#### Key Points
+- **Context**: `super` is tied to class and method definitions.
+- **Binding**: Unlike `this`, `super` is bound at definition time, not call time.
+- **Typical Use**: Primarily used in class definitions to reference and call methods or properties from a superclass.
+The `super` keyword helps manage inheritance and method calls in a structured and intuitive way, aligning with OOP principles.
+
+</details>
+
+<details>
+  <summary>The `new.target` Keyword</summary>
+  
+ The `new.target` binding is used to determine whether a function was called with the `new` operator. It references the constructor function or class being instantiated.
+
+### Key Uses
+
+1. **Checking for Constructor Invocation**
+   - When a constructor function is called with `new`, `new.target` is set to the constructor. This allows you to verify if the function was invoked as a constructor or directly.
+   ```javascript
+   class Foo {
+     constructor() {
+       console.log(new.target === Foo); // Logs: true
+     }
+   }
+   new Foo(); // => Logs: true
+   ```
+2. **Ensuring Proper Usage**
+
+- You can use  `new.target` to enforce correct instantiation practices. For example, you can ensure a function is called with `new` or throw an error if it's not.
+```javascript
+function Foo() {
+  if (new.target !== Foo) {
+    throw new Error('Foo is a constructor: please instantiate via new Foo()');
+  }
+}
+new Foo() instanceof Foo; // => true
+Foo(); // => Error: Foo is a constructor: please instantiate via new Foo()
+```
+3. **Creating Consistent Behavior**
+
+- To handle cases where constructors are called with or without `new`, you can make the constructor behave consistently by redirecting direct calls to `new`.
+```javascript
+function Foo() {
+  if (new.target !== Foo) {
+    return new Foo();
+  }
+}
+new Foo() instanceof Foo; // => true
+Foo() instanceof Foo; // => true
+```
+#### Best Practices
+- Avoid Confusing Behavior: Use `new.target` to enforce proper usage patterns or provide consistent behavior, but avoid implementing complex or unexpected functionality based on how the constructor is invoked. Stick to principles of least astonishment (POLA) to ensure your code remains intuitive and easy to understand.
 
 </details>
 
@@ -2614,4 +2691,95 @@ tokyo.sayMyName.call(london); // Logs: "My name is London"
   - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
 
 </details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
 
