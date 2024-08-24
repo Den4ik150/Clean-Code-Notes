@@ -2370,18 +2370,91 @@ console.log(yay.join()); // => "this ❤ is ❤ lovely"
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>When and How to Use Objects</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+ ### Appropriate Use of Objects
+
+- **Concept Representation:** Use objects to model and represent concepts or entities relevant to your application. For instance, subclassing `Array` to create a `HeartArray` is appropriate because it represents a sequential set of values with additional functionality.
+  
+- **Abstraction Design:** Ensure that objects fit naturally into your application’s design. Consider how other programmers will interact with your objects and avoid confusing or misleading designs.
+
+### Key Points
+
+- **Semantic Matching:** Objects should align with the concepts they represent. For example, `HeartArray` extends `Array` because it semantically represents an array with extra functionality.
+
+- **Expectation Management:** When designing objects, consider how they will be used and what other developers will expect. This will help in creating clear, maintainable code.
+
+### Summary
+
+Understanding and using objects correctly is crucial for writing effective JavaScript code. Proper design and use of objects make your code cleaner and easier to work with, aligning with best practices and programming expectations.
+
+For deeper insights into object design and abstraction, refer to Chapter 11, Design Patterns.
 
 </details>
 
 <details>
-  <summary>Evolution</summary>
+  <summary>Functions in JavaScript</summary>
   
-  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
-  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+ ### Types of Function Declarations
+
+1. **Function Declaration**
+   ```javascript
+   function myFunction() {}
+   ```
+- Hoisted: Yes
+- Named: Yes
+2. **Function Expression**
+```javascript
+const myFunction = function() {};
+```
+- Hoisted: No
+- Named: Optional (can be anonymous or named)
+3. **Named Function Expression**
+```javascript
+const myFunction = function myFunction() {};
+```
+- Hoisted: No
+- Named: Yes (name is local to the function itself)
+4. **Fat-Arrow Function Expression**
+```javascript
+const myFunction = () => {};
+```
+- Hoisted: No
+- Named: No
+#### Method Definitions  
+- Object Literal Method Definition
+
+```javascript
+const things = {
+  myMethod() {},
+  anotherMethod() {}
+};
+```
+- Class Method Definition
+
+```javascript
+class Thing {
+  myMethod() {}
+  anotherMethod() {}
+}
+```
+##### Syntactic Contexts
+1. **Statement**
+
+- Example: function myFunction() {}
+- Description: Functions declared as statements are hoisted and can be used before they appear in the code.
+2. **Expression**
+
+- Example: const myFunction = function() {};
+- Description: Functions declared as expressions are not hoisted and can be used only after their declaration.
+3. **Method Definition**
+
+- Example: myMethod() {}
+- Description: Methods defined within objects or classes.
+#### Key Points
+- Hoisting: Function declarations are hoisted, allowing their use before declaration. Function expressions and fat-arrow functions are not hoisted.
+- Naming: Function expressions can be named or anonymous. Named function expressions can have their own name, while fat-arrow functions are always anonymous.
+- Context: Methods are specific to object literals and class definitions.
 
 </details>
 
