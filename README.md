@@ -1259,7 +1259,74 @@ Key Points:
 - Long names indicate complexity: A long name often reveals a confused or overly complex abstraction.
 - Refactor where possible: Simplifying the abstraction usually leads to more straightforward and shorter names.
 - Aim for clarity: Names should ideally include one verb, one adjective, and one noun to keep them clear and concise.
-** The goal is to break down complex actions into simpler, more understandable methods, which naturally leads to shorter, clearer names.
+#### The goal is to break down complex actions into simpler, more understandable methods, which naturally leads to shorter, clearer names.
+
+</details>
+
+<details>
+  <summary>Consistency and Hierarchy</summary>
+  
+  **Consistency** and **hierarchy** in naming provide clear context and ease comprehension.
+
+#### Key Concepts:
+- **Consistency:** Use the same naming patterns across similar areas of code. This reduces cognitive strain by creating predictable and understandable naming conventions.
+- **Hierarchy:** Structure your code in a way that reflects the layers of abstraction. Names within a hierarchy derive meaning from their context, allowing for shorter and clearer names.
+
+#### Example of Improved Structure:
+Original structure:
+```plaintext
+app/
+|-- deepClone.js
+|-- deepEquality.js
+|-- getParamsFromURL.js
+|-- ...
+```
+Refactored structure:
+
+```plaintext
+app/
+|-- setup/
+|   |-- defaultConfig.js
+|   |-- setup.js
+|-- modal/
+|   |-- open.js
+|   |-- openWithTemplate.js
+|-- utils/
+|-- url/
+|   |-- getParams.js
+|   |-- get.js
+|   |-- set.js
+|-- obj/
+|-- deepEquality.js
+|-- deepClone.js
+```
+
+Naming within Functions:
+Avoid needlessly repeating context within variable names. For example:
+
+```javascript
+// Avoid this:
+function displayModalWithMessage(
+    modalDisplayer_Message,
+    modalDisplayer_Options
+) { ... }
+
+// Use this:
+function showModalWithMessage(message, options) { ... }
+```
+
+#### Hierarchical Naming and Abstraction:
+- Higher-level abstractions should appear at the top of the hierarchy, with lower-level details deeper within.
+- Consistency within layers: Ensure similar operations are named consistently within the same abstraction level, e.g., addItem, addItems, addItemIfNotExists.
+Example of Consistent Naming:
+```javascript
+class MyDataStructure {
+    addItem() {}
+    addItems() {}
+    addItemIfNotExists() {}
+}
+```
+#### Consistency and hierarchy reduce ambiguity, making code easier to understand and maintain.
 
 </details>
 
@@ -1278,3 +1345,67 @@ Key Points:
   - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
 
 </details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
