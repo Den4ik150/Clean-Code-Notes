@@ -1173,8 +1173,11 @@ function incId(id, f) {
         }
     }
 }
+```
+
 In this example, single-letter variables (e.g., f, x, n) and an abbreviated function name (incId) make the code difficult to comprehend.
 
+```
 Improved Naming:
 function incrementJobInstancesByIdIfFilter(id, filter) {
     for (let i = 0; i < jobs.length; i++) {
