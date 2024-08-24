@@ -2441,15 +2441,15 @@ class Thing {
 ##### Syntactic Contexts
 1. **Statement**
 
-- Example: ```javascriptfunction myFunction() {}```
+- Example: ```javascript function myFunction() {}```
 - Description: Functions declared as statements are hoisted and can be used before they appear in the code.
 2. **Expression**
 
-- Example: ```javascriptconst myFunction = function() {};```
+- Example: ```javascript const myFunction = function() {};```
 - Description: Functions declared as expressions are not hoisted and can be used only after their declaration.
 3. **Method Definition**
 
-- Example: ```javascriptmyMethod() {}```
+- Example: ```javascript myMethod() {}```
 - Description: Methods defined within objects or classes.
 #### Key Points
 - **Hoisting**: Function declarations are hoisted, allowing their use before declaration. Function expressions and fat-arrow functions are not hoisted.
