@@ -7,9 +7,9 @@
 # Clean-Code-Notes
 - This repository contains a concise summary of the book "Clean Code in JavaScript" by James Padolsey. It compiles the core ideas, key points, and essential principles from each chapter of the book. The summary is intended to provide a quick reference to the most important concepts without the need to reread the entire book.
 
-### Section 1: What is Clean Code Anyway?
+## Section 1: What is Clean Code Anyway?
 
-## Chapter 1: Setting the Scene
+### Chapter 1: Setting the Scene
 
 <details>
   <summary>JavaScript Origins</summary>
@@ -145,7 +145,7 @@
 
 </details>
 
-## Chapter 2: The Tenets of Clean Code
+### Chapter 2: The Tenets of Clean Code
 
 <details>
   
@@ -624,7 +624,7 @@ In the next chapter, we'll address common pitfalls in clean coding, such as carg
 
 </details>
 
-## Chapter 3: The Enemies of Clean Code
+### Chapter 3: The Enemies of Clean Code
 
 <details>
   <summary>Enemy #1 – JavaScript</summary>
@@ -764,7 +764,7 @@ Clean code is not just about writing code; it's about cultivating a culture of q
 
 </details>
 
-## Chapter 4: SOLID and Other Principles
+### Chapter 4: SOLID and Other Principles
 
 <details>
   <summary>The Law of Demeter (LoD)</summary>
@@ -1074,7 +1074,7 @@ These principles guide us in crafting balanced abstractions and improving code q
 
 </details>
 
-## Chapter 5: Naming Things Is Hard
+### Chapter 5: Naming Things Is Hard
 
 
 <details>
@@ -1486,9 +1486,9 @@ Single Responsibility Principle (SRP):
 </details>
 
 
-### Section 2: JavaScript and Its Bits
+## Section 2: JavaScript and Its Bits
 
-## Chapter 6: Primitive and Built-In Types
+### Chapter 6: Primitive and Built-In Types
 
 <details>
   <summary>Primitive Types</summary>
@@ -3170,7 +3170,7 @@ string.match(regexp); // => ['hat']
 
 </details>
 
-## Chapter 7: Dynamic Typing
+### Chapter 7: Dynamic Typing
 
 <details>
   <summary>Evolution</summary>
