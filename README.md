@@ -3618,7 +3618,7 @@ do {
   console.log(i++);
 } while (i < 5);
 ```
-## The switch Statement
+## The `switch` Statement
 - **Usage**: Selects one of many code blocks to execute.
 - **Breaking and Fallthrough**: Use break to exit and fallthrough to allow multiple cases to run.
 - **Example**:
@@ -3649,7 +3649,7 @@ function getDayType(day) {
   }
 }
 ```
-# Case Blocks
+## Case Blocks
 - **Definition**: Individual blocks within a switch statement.
 ## Multivariant Conditions
 - **Definition**: Using multiple conditions in if statements or switch cases.
@@ -3677,7 +3677,7 @@ const emitter = new EventEmitter();
 emitter.on('event', () => console.log("Event triggered"));
 emitter.emit('event');
 ```
-# Promises
+## Promises
 - **Definition**: Objects representing the eventual completion or failure of an asynchronous operation.
 - **Example**:
 ```javascript
