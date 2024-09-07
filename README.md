@@ -2669,6 +2669,375 @@ Foo() instanceof Foo; // => true
 </details>
 
 <details>
+  <summary> The `arguments` Object </summary>
+- The `arguments` object is an array-like object available within all non-arrow functions. It holds the values of the arguments passed to the function.
+
+### Characteristics
+
+- **Array-like**: It has a `length` property and indexed elements (like an array), but lacks array methods (e.g., `forEach`, `map`, `reduce`).
+- **Example Usage**:
+  ```javascript
+  function sum() {
+    let total = 0;
+    for (let n of arguments) total += n;
+    return total;
+  }
+  sum(1, 2, 3, 4, 5); // => 15
+  ```
+## Transition to Rest Parameters
+-With the introduction of the rest parameter syntax (...arg), arguments has become less common. Rest parameters provide a true array with all array methods available:
+
+```javascript
+Копировать код
+function sum(...numbers) {
+  return numbers.reduce((total, n) => total + n, 0);
+}
+sum(1, 2, 3, 4, 5); // => 15
+```
+## Best Practices
+- Use Rest Parameters: Prefer rest parameters (...args) for new code to leverage genuine array methods and enhance code readability.
+- Legacy Code: The arguments object is still valid and may appear in older codebases. However, transitioning to rest parameters is recommended for new development.
+
+</details>
+
+<details>
+  <summary> Function Names </summary>
+  
+### Key Points
+- **Function Declaration**: A function’s name is specified in its declaration and accessible via the `name` property.
+  ```javascript
+  function example() {}
+  example.name; // => "example"
+  ```
+- Named Function Expressions: A function assigned to a variable can have a name independent of the variable, accessible only within the function scope.
+
+``` javascript
+const myFunction = function internalName() {};
+myFunction.name; // => "internalName"
+```
+- Internal Usage: The internal name is useful for recursive or repeated calls inside the function itself, even when assigned to a different variable.
+
+``` javascript
+const myFunction = function recursiveFn() {
+  recursiveFn(); // => the function can call itself here
+};
+```
+## Practical Example
+- Named function expressions can be particularly useful for recursive callbacks:
+
+``` javascript
+const capitalizeNames = function capitalize(item) {
+  return Array.isArray(item) ?
+    item.map(capitalize) : 
+    item.charAt(0).toUpperCase() + item.slice(1);
+};
+```
+</details>
+
+<details>
+  <summary>Function Declarations</summary>
+
+  ### Key Points:
+- **Hoisting**: Function declarations are hoisted, meaning they can be called before they are declared in the code.
+  ```javascript
+  hoistedFunction(); // Works without error
+  function hoistedFunction() {}
+  ```
+- Contrast with Function Expressions: Function expressions assigned to variables are not hoisted and will throw an error if called before they are initialized.
+
+```javascript
+regularFunctionExpression(); // ReferenceError
+const regularFunctionExpression = function() {};
+```
+- Best Practices: While hoisting can be useful, relying on it is generally discouraged as it can lead to confusion. It's better to declare functions in a clear, logical order.
+
+</details>
+
+
+<details>
+  <summary>Function Expressions</summary>
+  
+  ### Key Points:
+- **Definition**: Function expressions define functions as values, allowing them to be used wherever other values are defined.
+  ```javascript
+  const arrayOfFunctions = [
+    function(){},
+    function(){}
+  ];
+  ```
+- Anonymous Functions: Function expressions can be anonymous, meaning they are not assigned a name. These are useful in callbacks, such as:
+
+```javascript
+[1, 2, 3].forEach(function(value) {
+  // do something with each value
+});
+```
+## Arrow Functions vs Function Expressions:
+- Function expressions have access to their own this and arguments bindings.
+- Arrow functions do not, which can limit their use in certain contexts, such as object methods or DOM event handlers.
+# Use Case: For instance, when defining methods on prototypes, function expressions allow access to the instance via this:
+
+``` javascript
+FooBear.prototype.sayHello = function() {
+  return `Hello I am ${this.name}`;
+};
+new FooBear().sayHello(); // => "Hello I am Foo Bear"
+```
+# Conclusion: Despite the rise of arrow functions, function expressions remain valuable, especially when this context is needed.
+
+</details>
+
+
+<details>
+  <summary>Arrow Functions</summary>
+  
+  ### Key Points:
+- **Definition**: Arrow functions are a more succinct alternative to function expressions with two forms:
+  - **Regular**: Includes a function body and requires an explicit `return`.
+    ```javascript
+    const arrow = (arg1, arg2) => { return 123; };
+    ```
+  - **Concise**: Omits the `return` keyword for a single expression.
+    ```javascript
+    const arrow = (arg1, arg2) => 123;
+    ```
+
+- **Single Argument**: For single arguments, parentheses can be omitted:
+  ```javascript
+  const addOne = n => n + 1;
+  ```
+- Common Use Case: Arrow functions are often used in array methods for concise callbacks:
+
+```javascript
+[1, 2, 3].map(n => n * 2).map(n => `Number ${n}`);
+// => ["Number 2", "Number 4", "Number 6"]
+```
+-Returning Objects: To return an object literal, wrap it in parentheses to avoid confusion with the function body:
+
+```javascript
+const giveMeAnObjectPlease = () => ({ name: 'Gandalf', age: 2019 });
+```
+## Key Differences from function expressions:
+
+- No this or arguments bindings: Arrow functions retain the this value from their enclosing context.
+- No prototype property: They cannot be used as constructors.
+# Best Usage: Arrow functions excel in scenarios requiring concise syntax and when retaining the this context, such as event handlers:
+
+```javascript
+class MyUIComponent extends UIComponent {
+  constructor() {
+    this.bindEvents({
+      onClick: () => {
+        this; // Refers to MyUIComponent instance
+      }
+    });
+  }
+}
+```
+- Considerations: While succinct, arrow functions can reduce readability in dense code. Always prioritize clarity over brevity:
+
+```javascript
+process(n => n.filter((nCallback, compute) => compute(() => nCallback())));
+```
+</details>
+
+
+<details>
+  <summary>Immediately Invoked Function Expressions (IIFE)</summary>
+  
+- **IIFE Definition**: A function that runs immediately after being defined.
+  ```javascript
+  (function() { /* code */ })();
+  ```
+## Arrow Function IIFE:
+
+```javascript
+(() => { /* code */ })();
+```
+- Purpose: Creates a temporary scope, preventing variable leakage to the outer scope.
+
+- Modern Usage: Rarely needed due to pre-compilation and module systems, but still useful for quick, self-contained logic.
+
+</details>
+
+
+<details>
+  <summary>Method Definitions</summary>
+  
+ - **Method in Object Literals**:
+  ```javascript
+  const things = {
+    myFunction() { /* code */ }
+  };
+  ```
+- **Method in Class**:
+
+```javascript
+Копировать код
+class Things {
+  myFunction() { /* code */ }
+}
+```
+- Method Bound to Object: Methods are bound to their object ([[HomeObject]]), allowing them to reference super for calling parent class methods.
+
+# Key Example:
+
+```javascript
+class Dog {
+  greet() { return 'Bark!'; }
+}
+
+class JessieTheDog extends Dog {
+  greet() { return `${super.greet()} I am Jessie!`; }
+}
+
+new JessieTheDog().greet(); // "Bark! I am Jessie!"
+```
+- Borrowing Methods Caution: Methods retain their [[HomeObject]] binding:
+
+``` javascript
+class JessieTheCat extends Cat {
+  greet = JessieTheDog.prototype.greet;
+}
+
+new JessieTheCat().greet(); // "Bark! I am Jessie!"
+```
+- Takeaway: Method definitions are more concise but retain binding to their original object, which can lead to unexpected behavior when borrowing methods.
+
+</details>
+
+
+<details>
+  <summary>Async Functions</summary>
+  
+- **Async Functions** are defined using the `async` keyword before any function type:
+  ```javascript
+  // Async Function Declaration:
+  async function foo() {}
+  
+  // Async Function Expression:
+  const foo = async function() {};
+  
+  // Async Arrow Function:
+  const foo = async () => {};
+  
+  // Async Method Definition:
+  const obj = { async foo() {} };
+  ```
+## Key Features:
+
+`await` can be used inside async functions to pause execution until a Promise resolves.
+- Async functions always return a Promise, which can also be awaited:
+```javascript
+const result = await someAsyncFunction();
+```
+# Async Function Characteristics:
+
+- Same features as their non-async counterparts (e.g., async arrow functions don’t bind this or arguments).
+- An async function declaration is hoisted, just like non-async functions.
+- Promise Handling: Async functions simplify handling of Promises compared to traditional callback functions.
+</details>
+
+
+<details>
+  <summary>Generator Functions</summary>
+  
+- **Purpose**: Generators control iteration over sequences, including infinite sequences.
+  
+- **Definition**: Created with a `function*` keyword, followed by an asterisk (`*`). They return a generator object that can pause and resume execution.
+
+- **Behavior**:
+  - Use `yield` to pause and return values.
+  - The generator can be iterated using `.next()` method or with constructs like `for...of`.
+
+- **Example**: 
+  ```javascript
+  function* myGenerator() {
+    yield 'First';
+    yield 'Second';
+    yield 'Third';
+  }
+  
+  const gen = myGenerator();
+  console.log(gen.next().value); // 'First'
+  console.log(gen.next().value); // 'Second'
+  console.log(gen.next().value); // 'Third'
+  ```
+
+  # Async Generators:
+- Combine async and generator functions for handling asynchronous operations in an iterable manner.
+- Use for await...of to handle async iterations.
+
+</details>
+
+
+<details>
+  <summary>Arrays and Iterables</summary>
+  
+# Arrays: Specialized objects with ordered elements. Defined using square brackets.
+- Arrays have useful methods like .map() and .join() to manipulate and access elements.
+# Iteration:
+- Use for...of or forEach for iterating over array elements. These methods are preferred over traditional for loops for readability and functionality.
+
+</details>
+
+
+<details>
+  <summary>Array-like Objects</summary>
+  
+- Objects that have a length property and indexed elements, but are not true arrays.
+- You can use array methods by borrowing them, or convert them to actual arrays using methods like the spread operator (...).
+ # Example:
+
+```javascript
+const arrayLike = { length: 2, 0: 'foo', 1: 'bar' };
+const realArray = Array.from(arrayLike); // Converts array-like to a real array
+```
+
+</details>
+
+
+<details>
+  <summary>Set and WeakSet</summary>
+  
+
+- **Set**:
+  - **Purpose**: Store unique values without duplicates.
+  - **Initialization**: Can be initialized with any iterable, like arrays or strings.
+  - **Example**:
+    ```javascript
+    const numbers = new Set([1, 2, 3, 4, 3, 2, 1]);
+    console.log(numbers); // Set {1, 2, 3, 4}
+    ```
+
+- **WeakSet**:
+  - **Purpose**: Store unique objects with weak references, allowing for garbage collection.
+  - **Features**:
+    - Only accepts objects (not primitives).
+    - Objects in WeakSet can be garbage-collected if no other references exist.
+  - **Note**: Useful for managing memory in certain contexts, such as caching objects.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+<details>
   <summary>Evolution</summary>
   
   - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
@@ -2692,6 +3061,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2701,6 +3077,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2710,6 +3093,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2719,6 +3109,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2728,6 +3125,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2737,6 +3141,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2746,6 +3157,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2755,6 +3173,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2764,6 +3189,13 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
@@ -2773,6 +3205,53 @@ Foo() instanceof Foo; // => true
 
 </details>
 
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
+
+<details>
+  <summary>Evolution</summary>
+  
+  - Grew from simple web scripts to a key language for complex web applications, server runtimes (Node.js), and more.
+  - JavaScript was standardized as ECMAScript in 1997, with ongoing updates from the TC39 committee.
+
+</details>
 
 <details>
   <summary>Evolution</summary>
